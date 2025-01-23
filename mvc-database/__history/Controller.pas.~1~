@@ -1,0 +1,59 @@
+unit Controller;
+
+interface
+
+uses
+  System.Generics.Collections, Model;
+
+type
+  TAddressController = class
+  private
+    FPersonenListe: TObjectList<TPerson>;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    procedure AddPerson(const AVorname, AName, AWohnort: string);
+    procedure DeletePerson(Index: Integer);
+    function GetPerson(Index: Integer): TPerson;
+    function Count: Integer;
+  end;
+
+implementation
+
+constructor TAddressController.Create;
+begin
+  FPersonenListe := TObjectList<TPerson>.Create;
+end;
+
+destructor TAddressController.Destroy;
+begin
+  FPersonenListe.Free;
+  inherited;
+end;
+
+procedure TAddressController.AddPerson(const AVorname, AName, AWohnort: string);
+begin
+  FPersonenListe.Add(TPerson.Create(AVorname, AName, AWohnort));
+end;
+
+procedure TAddressController.DeletePerson(Index: Integer);
+begin
+  if (Index >= 0) and (Index < FPersonenListe.Count) then
+    FPersonenListe.Delete(Index);
+end;
+
+function TAddressController.GetPerson(Index: Integer): TPerson;
+begin
+  if (Index >= 0) and (Index < FPersonenListe.Count) then
+    Result := FPersonenListe[Index]
+  else
+    Result := nil;
+end;
+
+function TAddressController.Count: Integer;
+begin
+  Result := FPersonenListe.Count;
+end;
+
+end.
+

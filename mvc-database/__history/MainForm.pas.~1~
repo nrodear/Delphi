@@ -1,0 +1,76 @@
+
+
+unit MainForm;
+
+interface
+
+uses
+  Vcl.Forms, Vcl.StdCtrls, Vcl.ComCtrls, Controller;
+
+type
+  TFormMain = class(TForm)
+    ListView: TListView;
+    EditVorname: TEdit;
+    EditName: TEdit;
+    EditWohnort: TEdit;
+    BtnAdd: TButton;
+    BtnDelete: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure BtnAddClick(Sender: TObject);
+    procedure BtnDeleteClick(Sender: TObject);
+  private
+    FController: TAddressController;
+    procedure RefreshListView;
+  public
+    { Public-Deklarationen }
+  end;
+
+var
+  Form1 : TFormMain;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormMain.FormCreate(Sender: TObject);
+begin
+  FController := TAddressController.Create;
+end;
+
+procedure TFormMain.BtnAddClick(Sender: TObject);
+begin
+  FController.AddPerson(EditVorname.Text, EditName.Text, EditWohnort.Text);
+  RefreshListView;
+end;
+
+procedure TFormMain.BtnDeleteClick(Sender: TObject);
+var
+  SelectedIndex: Integer;
+begin
+  if ListView.ItemIndex >= 0 then
+  begin
+    SelectedIndex := ListView.ItemIndex;
+    FController.DeletePerson(SelectedIndex);
+    RefreshListView;
+  end;
+end;
+
+procedure TFormMain.RefreshListView;
+var
+  I: Integer;
+  Person: TPerson;
+  ListItem: TListItem;
+begin
+  ListView.Clear;
+  for I := 0 to FController.Count - 1 do
+  begin
+    Person := FController.GetPerson(I);
+    ListItem := ListView.Items.Add;
+    ListItem.Caption := Person.Vorname;
+    ListItem.SubItems.Add(Person.Name);
+    ListItem.SubItems.Add(Person.Wohnort);
+  end;
+end;
+
+end.
+
