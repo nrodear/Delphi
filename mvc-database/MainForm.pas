@@ -18,6 +18,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure BtnAddClick(Sender: TObject);
     procedure BtnDeleteClick(Sender: TObject);
+    procedure BtnCloseClick(Sender: TObject);
   private
     FController: TAddressController;
     procedure RefreshListView;
@@ -46,6 +47,11 @@ procedure TFormMain.BtnAddClick(Sender: TObject);
 begin
   FController.AddPerson(EditFirstName.Text, EditLastName.Text, EditDomicile.Text);
   RefreshListView;
+end;
+
+procedure TFormMain.BtnCloseClick(Sender: TObject);
+begin
+  FormMain.Close;
 end;
 
 procedure TFormMain.BtnDeleteClick(Sender: TObject);

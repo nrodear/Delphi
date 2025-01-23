@@ -69,5 +69,6 @@ object FormMain: TFormMain
     Height = 25
     Caption = 'Close'
     TabOrder = 6
+    OnClick = BtnCloseClick
   end
 end

@@ -1,3 +1,5 @@
-mvc-database\__recovery\
-mvc-database\__history\
-mvc-database\Win32\
+mvc-database/__recovery/
+
+mvc-database/Win32/
+mvc-database/__history/*
+
