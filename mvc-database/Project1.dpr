@@ -4,7 +4,8 @@ uses
   Vcl.Forms,
   Model in 'Model.pas',
   Controller in 'Controller.pas',
-  MainForm in 'MainForm.pas' {FormMain};
+  MainForm in 'MainForm.pas' {FormMain},
+  ControllerDB in 'ControllerDB.pas';
 
 {$R *.res}
 
