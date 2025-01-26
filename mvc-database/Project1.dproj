@@ -130,6 +130,8 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="ControllerDB.pas"/>
+        <DCCReference Include="SingletonDB.pas"/>
+        <DCCReference Include="FireDACSample.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -3,7 +3,8 @@ unit MainForm;
 interface
 
 uses
-  Vcl.Forms, Vcl.StdCtrls, Vcl.ComCtrls, Controller,Model, System.Classes,
+  Vcl.Forms, Vcl.StdCtrls, Vcl.ComCtrls, ControllerDB, Controller, Model,
+  System.Classes, FireDAC.DApt,   FireDAC.Comp.UI,
   Vcl.Controls;
 
 type
@@ -21,6 +22,7 @@ type
     procedure BtnCloseClick(Sender: TObject);
   private
     FController: TAddressController;
+    PersonControllerDB: TPersonControllerDB;
     procedure RefreshListView;
   public
   end;
@@ -34,18 +36,26 @@ implementation
 
 procedure TFormMain.FormCreate(Sender: TObject);
 begin
-  FController := TAddressController.Create;
 
-  // Configure ListView
-  ListView.ViewStyle := vsReport;
-  ListView.Columns.Add.Caption := 'First Name';
-  ListView.Columns.Add.Caption := 'Last Name';
-  ListView.Columns.Add.Caption := 'Domicile';
+  PersonControllerDB := TPersonControllerDB.Create;
+
+  if (PersonControllerDB.Get(0) <> nil) then
+  begin
+
+    FController := TAddressController.Create;
+
+    // Configure ListView
+    ListView.ViewStyle := vsReport;
+    ListView.Columns.Add.Caption := 'First Name';
+    ListView.Columns.Add.Caption := 'Last Name';
+    ListView.Columns.Add.Caption := 'Domicile';
+
+  end;
 end;
 
 procedure TFormMain.BtnAddClick(Sender: TObject);
 begin
-  FController.AddPerson(EditFirstName.Text, EditLastName.Text, EditDomicile.Text);
+  FController.Add(EditFirstName.Text, EditLastName.Text, EditDomicile.Text);
   RefreshListView;
 end;
 
@@ -61,7 +71,7 @@ begin
   if ListView.ItemIndex >= 0 then
   begin
     SelectedIndex := ListView.ItemIndex;
-    FController.DeletePerson(SelectedIndex);
+    FController.Delete(SelectedIndex);
     RefreshListView;
   end;
 end;
@@ -75,7 +85,7 @@ begin
   ListView.Clear;
   for I := 0 to FController.Count - 1 do
   begin
-    Person := FController.GetPerson(I);
+    Person := FController.Get(I);
     ListItem := ListView.Items.Add;
     ListItem.Caption := Person.FirstName;
     ListItem.SubItems.Add(Person.LastName);

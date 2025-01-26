@@ -12,9 +12,9 @@ type
   public
     constructor Create;
     destructor Destroy; override;
-    procedure AddPerson(const AFirstName, ALastName, ADomicile: string);
-    procedure DeletePerson(Index: Integer);
-    function GetPerson(Index: Integer): TPerson;
+    procedure Add(const AFirstName, ALastName, ADomicile: string);
+    procedure Delete(Index: Integer);
+    function Get(Index: Integer): TPerson;
     function Count: Integer;
   end;
 
@@ -31,18 +31,19 @@ begin
   inherited;
 end;
 
-procedure TAddressController.AddPerson(const AFirstName, ALastName, ADomicile: string);
+procedure TAddressController.Add(const AFirstName, ALastName,
+  ADomicile: string);
 begin
-  FPersons.Add(TPerson.Create(AFirstName, ALastName, ADomicile));
+  FPersons.Add(TPerson.Create(-2,AFirstName, ALastName, ADomicile));
 end;
 
-procedure TAddressController.DeletePerson(Index: Integer);
+procedure TAddressController.Delete(Index: Integer);
 begin
   if (Index >= 0) and (Index < FPersons.Count) then
     FPersons.Delete(Index);
 end;
 
-function TAddressController.GetPerson(Index: Integer): TPerson;
+function TAddressController.Get(Index: Integer): TPerson;
 begin
   if (Index >= 0) and (Index < FPersons.Count) then
     Result := FPersons[Index]
@@ -56,4 +57,3 @@ begin
 end;
 
 end.
-
