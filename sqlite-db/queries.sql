@@ -7,7 +7,7 @@ CREATE TABLE person (
  );
 
 INSERT INTO person (firstname,lastname,domicile)
-VALUES ("Nic","Gerlach","Bremen");
+VALUES ("Lass","Lach","Germany,Ol");
 
 SELECT * FROM person;
  

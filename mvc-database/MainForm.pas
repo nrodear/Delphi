@@ -5,7 +5,8 @@ interface
 uses
   Vcl.Forms, Vcl.StdCtrls, Vcl.ComCtrls, ControllerDB, Controller, Model,
   System.Classes, FireDAC.DApt,   FireDAC.Comp.UI,
-  Vcl.Controls;
+  Vcl.Controls, FireDAC.UI.Intf, FireDAC.VCLUI.Error, FireDAC.Stan.Error,
+  FireDAC.VCLUI.Wait, FireDAC.Stan.Intf;
 
 type
   TFormMain = class(TForm)
@@ -16,6 +17,8 @@ type
     EditDomicile: TEdit;
     ListView: TListView;
     BtnClose: TButton;
+    FDGUIxErrorDialog1: TFDGUIxErrorDialog;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     procedure FormCreate(Sender: TObject);
     procedure BtnAddClick(Sender: TObject);
     procedure BtnDeleteClick(Sender: TObject);

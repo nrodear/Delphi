@@ -71,4 +71,14 @@ object FormMain: TFormMain
     TabOrder = 6
     OnClick = BtnCloseClick
   end
+  object FDGUIxErrorDialog1: TFDGUIxErrorDialog
+    Provider = 'Forms'
+    Left = 424
+    Top = 72
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 344
+    Top = 40
+  end
 end

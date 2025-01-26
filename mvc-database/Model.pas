@@ -14,10 +14,16 @@ type
     property FirstName: string read FFirstName write FFirstName;
     property LastName: string read FLastName write FLastName;
     property Domicile: string read FDomicile write FDomicile;
-    constructor Create(const id : integer;const  AFirstName, ALastName, ADomicile: string);
+    constructor Create(const id : integer;const  AFirstName, ALastName, ADomicile: string); overload;
+    constructor Create(); overload;
   end;
 
 implementation
+
+constructor TPerson.Create();
+begin
+  FID := -1;
+end;
 
 constructor TPerson.Create(const id : integer; const AFirstName, ALastName, ADomicile: string);
 begin

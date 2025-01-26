@@ -6,8 +6,7 @@ uses
   Controller in 'Controller.pas',
   MainForm in 'MainForm.pas' {FormMain},
   ControllerDB in 'ControllerDB.pas',
-  SingletonDB in 'SingletonDB.pas',
-  FireDACSample in 'FireDACSample.pas';
+  SingletonDB in 'SingletonDB.pas';
 
 {$R *.res}
 

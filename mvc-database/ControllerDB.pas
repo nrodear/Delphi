@@ -3,11 +3,11 @@ unit ControllerDB;
 interface
 
 uses
-  System.Generics.Collections, Model,SingletonDB,
+  System.Generics.Collections, Model, SingletonDB,
   System.SysUtils, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
-  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
-  FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Comp.Client,
-  FireDACSample;
+  FireDAC.UI, FireDAC.Comp.UI, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Param, FireDAC.Phys,
+  FireDAC.Stan.Async, FireDAC.Phys.SQLite, FireDAC.Comp.Client;
 
 type
   TPersonControllerDB = class
@@ -58,8 +58,6 @@ var
 
 begin
 
-  SQLiteExample;
-
   query := 'SELECT * FROM person WHERE id = :Params0 ORDER BY id';
 
   FDQuery := TFDQuery.Create(nil);
@@ -69,6 +67,7 @@ begin
 
   FDQuery.Open;
 
+  person := TPerson.Create();
   if (not FDQuery.eof) then
   begin
     name := FDQuery.FieldByName('firstname').AsString;
