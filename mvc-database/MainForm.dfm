@@ -2,8 +2,8 @@ object FormMain: TFormMain
   Left = 0
   Top = 0
   Caption = 'FormMain'
-  ClientHeight = 344
-  ClientWidth = 516
+  ClientHeight = 334
+  ClientWidth = 524
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -22,7 +22,7 @@ object FormMain: TFormMain
     OnClick = BtnDeleteClick
   end
   object BtnAdd: TButton
-    Left = 48
+    Left = 8
     Top = 8
     Width = 75
     Height = 25
@@ -31,7 +31,7 @@ object FormMain: TFormMain
     OnClick = BtnAddClick
   end
   object EditFirstName: TEdit
-    Left = 145
+    Left = 97
     Top = 10
     Width = 121
     Height = 23
@@ -39,7 +39,7 @@ object FormMain: TFormMain
     Text = 'FirstName'
   end
   object EditLastName: TEdit
-    Left = 145
+    Left = 97
     Top = 39
     Width = 121
     Height = 23
@@ -47,7 +47,7 @@ object FormMain: TFormMain
     Text = 'LastName'
   end
   object EditDomicile: TEdit
-    Left = 145
+    Left = 97
     Top = 68
     Width = 121
     Height = 23
@@ -55,7 +55,7 @@ object FormMain: TFormMain
     Text = 'Domicile'
   end
   object ListView: TListView
-    Left = 145
+    Left = 97
     Top = 136
     Width = 250
     Height = 150
@@ -73,12 +73,12 @@ object FormMain: TFormMain
   end
   object FDGUIxErrorDialog1: TFDGUIxErrorDialog
     Provider = 'Forms'
-    Left = 424
-    Top = 72
+    Left = 432
+    Top = 64
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Forms'
-    Left = 344
-    Top = 40
+    Left = 432
+    Top = 8
   end
 end

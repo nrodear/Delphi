@@ -2,11 +2,12 @@ program Project1;
 
 uses
   Vcl.Forms,
-  Model in 'Model.pas',
+  Person in 'Person.pas',
   Controller in 'Controller.pas',
   MainForm in 'MainForm.pas' {FormMain},
   ControllerDB in 'ControllerDB.pas',
-  SingletonDB in 'SingletonDB.pas';
+  SingletonDB in 'SingletonDB.pas',
+  CheckException in 'CheckException.pas';
 
 {$R *.res}
 

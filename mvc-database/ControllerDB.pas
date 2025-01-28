@@ -3,7 +3,7 @@ unit ControllerDB;
 interface
 
 uses
-  System.Generics.Collections, Model, SingletonDB,
+  System.Generics.Collections, Person, SingletonDB,
   System.SysUtils, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
   FireDAC.UI, FireDAC.Comp.UI, FireDAC.UI.Intf, FireDAC.Phys.Intf,
   FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Param, FireDAC.Phys,
@@ -19,7 +19,7 @@ type
     destructor Destroy; override;
     procedure Add(const AFirstName, ALastName, ADomicile: string);
     procedure Delete(Index: integer);
-    function Get(Index: integer): TPerson;
+    function TryGet(Index: integer; person: TPerson): Boolean;
     function Count: integer;
   end;
 
@@ -48,14 +48,13 @@ begin
   // FPersons.Delete(Index);
 end;
 
-function TPersonControllerDB.Get(Index: integer): TPerson;
+function TPersonControllerDB.TryGet(Index: integer; person: TPerson): Boolean;
 var
   query: String;
-  person: TPerson;
   name: string;
   lastname: string;
   domicile: string;
-
+  success: Boolean;
 begin
 
   query := 'SELECT * FROM person WHERE id = :Params0 ORDER BY id';
@@ -65,19 +64,17 @@ begin
   FDQuery.SQL.Text := query;
   FDQuery.ParamByName('Params0').AsInteger := Index;
 
+  success := false;
   FDQuery.Open;
-
-  person := TPerson.Create();
   if (not FDQuery.eof) then
   begin
     name := FDQuery.FieldByName('firstname').AsString;
     lastname := FDQuery.FieldByName('lastname').AsString;
     domicile := FDQuery.FieldByName('domicile').AsString;
 
-    person := TPerson.Create(-1, name, lastname, domicile)
-
+    success := TPerson.TryGetNewTPerson(-1, name, lastname, domicile, person);
   end;
-  Result := person;
+  Result := success;
 end;
 
 function TPersonControllerDB.Count: integer;

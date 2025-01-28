@@ -3,8 +3,8 @@ unit MainForm;
 interface
 
 uses
-  Vcl.Forms, Vcl.StdCtrls, Vcl.ComCtrls, ControllerDB, Controller, Model,
-  System.Classes, FireDAC.DApt,   FireDAC.Comp.UI,
+  Vcl.Forms, Vcl.StdCtrls, Vcl.ComCtrls, ControllerDB, Controller, Person,
+  System.Classes, FireDAC.DApt, FireDAC.Comp.UI,
   Vcl.Controls, FireDAC.UI.Intf, FireDAC.VCLUI.Error, FireDAC.Stan.Error,
   FireDAC.VCLUI.Wait, FireDAC.Stan.Intf;
 
@@ -41,19 +41,14 @@ procedure TFormMain.FormCreate(Sender: TObject);
 begin
 
   PersonControllerDB := TPersonControllerDB.Create;
+  FController := TAddressController.Create;
 
-  if (PersonControllerDB.Get(0) <> nil) then
-  begin
+  // Configure ListView
+  ListView.ViewStyle := vsReport;
+  ListView.Columns.Add.Caption := 'First Name';
+  ListView.Columns.Add.Caption := 'Last Name';
+  ListView.Columns.Add.Caption := 'Domicile';
 
-    FController := TAddressController.Create;
-
-    // Configure ListView
-    ListView.ViewStyle := vsReport;
-    ListView.Columns.Add.Caption := 'First Name';
-    ListView.Columns.Add.Caption := 'Last Name';
-    ListView.Columns.Add.Caption := 'Domicile';
-
-  end;
 end;
 
 procedure TFormMain.BtnAddClick(Sender: TObject);

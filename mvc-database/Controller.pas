@@ -3,7 +3,7 @@ unit Controller;
 interface
 
 uses
-  System.Generics.Collections, Model;
+  System.Generics.Collections, Person;
 
 type
   TAddressController = class
@@ -33,8 +33,18 @@ end;
 
 procedure TAddressController.Add(const AFirstName, ALastName,
   ADomicile: string);
+var
+  person: TPerson;
+  success: Boolean;
 begin
-  FPersons.Add(TPerson.Create(-2,AFirstName, ALastName, ADomicile));
+
+  success := TPerson.TryGetNewTPerson(-2, AFirstName, ALastName,
+    ADomicile, person);
+  if success then
+  begin
+    FPersons.Add(person);
+  end;
+
 end;
 
 procedure TAddressController.Delete(Index: Integer);
