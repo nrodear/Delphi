@@ -3,11 +3,24 @@ unit ControllerDB;
 interface
 
 uses
-  System.Generics.Collections, Person, SingletonDB,
-  System.SysUtils, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
-  FireDAC.UI, FireDAC.Comp.UI, FireDAC.UI.Intf, FireDAC.Phys.Intf,
-  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Param, FireDAC.Phys,
-  FireDAC.Stan.Async, FireDAC.Phys.SQLite, FireDAC.Comp.Client;
+  System.Generics.Collections,
+  Person,
+  SingletonDB,
+  System.SysUtils,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI,
+  FireDAC.Comp.UI,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Param,
+  FireDAC.Phys,
+  FireDAC.Stan.Async,
+  FireDAC.Phys.SQLite,
+  FireDAC.Comp.Client;
 
 type
   TPersonControllerDB = class

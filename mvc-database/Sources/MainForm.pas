@@ -3,10 +3,21 @@ unit MainForm;
 interface
 
 uses
-  Vcl.Forms, Vcl.StdCtrls, Vcl.ComCtrls, ControllerDB, Controller, Person,
-  System.Classes, FireDAC.DApt, FireDAC.Comp.UI,
-  Vcl.Controls, FireDAC.UI.Intf, FireDAC.VCLUI.Error, FireDAC.Stan.Error,
-  FireDAC.VCLUI.Wait, FireDAC.Stan.Intf;
+  Vcl.Forms,
+  Vcl.StdCtrls,
+  Vcl.ComCtrls,
+  ControllerDB,
+  Controller,
+  Person,
+  System.Classes,
+  FireDAC.DApt,
+  FireDAC.Comp.UI,
+  Vcl.Controls,
+  FireDAC.UI.Intf,
+  FireDAC.VCLUI.Error,
+  FireDAC.Stan.Error,
+  FireDAC.VCLUI.Wait,
+  FireDAC.Stan.Intf;
 
 type
   TFormMain = class(TForm)

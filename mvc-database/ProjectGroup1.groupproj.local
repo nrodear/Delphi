@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions/>
-  <Default.Personality>
-    <Projects ActiveProject="D:\git-demos\delphi\mvc-database\Test\Project1UnitTests.dproj"/>
-  </Default.Personality>
+	<Transactions/>
+	<Default.Personality>
+		<Projects ActiveProject="D:\git-demos\delphi\mvc-database\Project1.dproj"/>
+	</Default.Personality>
 </BorlandProject>

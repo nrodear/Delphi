@@ -2,7 +2,8 @@ unit Person;
 
 interface
 
-uses SysUtils;
+uses
+  SysUtils;
 
 type
   TPerson = class

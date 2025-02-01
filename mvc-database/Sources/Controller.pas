@@ -3,7 +3,8 @@ unit Controller;
 interface
 
 uses
-  System.Generics.Collections, Person;
+  System.Generics.Collections,
+  Person;
 
 type
   TAddressController = class

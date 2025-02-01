@@ -131,15 +131,15 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Person.pas"/>
-        <DCCReference Include="Controller.pas"/>
-        <DCCReference Include="MainForm.pas">
+        <DCCReference Include="Sources\CheckException.pas"/>
+        <DCCReference Include="Sources\Controller.pas"/>
+        <DCCReference Include="Sources\ControllerDB.pas"/>
+        <DCCReference Include="Sources\Person.pas"/>
+        <DCCReference Include="Sources\SingletonDB.pas"/>
+        <DCCReference Include="Sources\MainForm.pas">
             <Form>FormMain</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ControllerDB.pas"/>
-        <DCCReference Include="SingletonDB.pas"/>
-        <DCCReference Include="CheckException.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

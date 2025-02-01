@@ -4,9 +4,17 @@ interface
 
 uses
   SyncObjs,
-  System.SysUtils, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
-  FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
-  FireDAC.Phys, FireDAC.Phys.SQLite, FireDAC.Comp.Client;
+  System.SysUtils,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Phys,
+  FireDAC.Phys.SQLite,
+  FireDAC.Comp.Client;
 
 type
   ISingleton = interface
