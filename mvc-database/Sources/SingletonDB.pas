@@ -60,7 +60,7 @@ function TSingleton.GetConnection: TFDConnection;
 begin
   if not Assigned(FDConnection) then
   begin
-    FDConnection := CreateConnection();
+    FDConnection := CreateConnection;
   end;
   Result := FDConnection;
 end;

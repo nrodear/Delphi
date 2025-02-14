@@ -1,4 +1,4 @@
-program Project1UnitTests;
+program UnitTest3;
 {
 
   Delphi DUnit Test Project
@@ -11,15 +11,12 @@ program Project1UnitTests;
 }
 
 {$IFDEF CONSOLE_TESTRUNNER}
-//{$APPTYPE CONSOLE}
+{$APPTYPE CONSOLE}
 {$ENDIF}
 
 uses
   DUnitTestRunner,
-  TestPerson in 'TestPerson.pas',
-  Person in '..\Sources\Person.pas',
-  TestResolver in 'TestResolver.pas',
-  Resolver in '..\Sources\Resolver.pas';
+  TestResolver in 'mvc-database\Test\TestResolver.pas';
 
 {$R *.RES}
 

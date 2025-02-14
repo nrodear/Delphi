@@ -8,14 +8,14 @@ uses
 type
   TPerson = class
   private
+    FID2: integer;
     FID: integer;
     FFirstName: string;
     FLastName: string;
     FDomicile: string;
     constructor Create(Id: integer; AFirstName, ALastName,
       ADomicile: string); overload;
-{$HINTS OFF}
-    constructor Create(); overload;
+    constructor Create; overload;
 
   public
     property Id: integer read FID write FID;
@@ -23,14 +23,14 @@ type
     property LastName: string read FLastName write FLastName;
     property Domicile: string read FDomicile write FDomicile;
 
-    class function TryGet(): Boolean;
+    class function TryGet: Boolean;
     class function TryGetNewTPerson(Id: integer;
       AFirstName, ALastName, ADomicile: string; out Person: TPerson): Boolean;
   end;
 
 implementation
 
-constructor TPerson.Create();
+constructor TPerson.Create;
 begin
   FID := -1;
 end;
@@ -59,12 +59,12 @@ begin
   begin
     Person := TPerson.Create(Id, AFirstName, ALastName, ADomicile);
   end;
-  result := check;
+  Result := check;
 end;
 
 class function TPerson.TryGet(): Boolean;
 begin
-  result := true;
+  Result := true;
 end;
 
 end.

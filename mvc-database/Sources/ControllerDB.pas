@@ -67,7 +67,7 @@ var
   name: string;
   lastname: string;
   domicile: string;
-  success: Boolean;
+  Success: Boolean;
 begin
 
   query := 'SELECT * FROM person WHERE id = :Params0 ORDER BY id';
@@ -77,7 +77,7 @@ begin
   FDQuery.SQL.Text := query;
   FDQuery.ParamByName('Params0').AsInteger := Index;
 
-  success := false;
+  Success := False;
   FDQuery.Open;
   if (not FDQuery.eof) then
   begin
@@ -85,9 +85,9 @@ begin
     lastname := FDQuery.FieldByName('lastname').AsString;
     domicile := FDQuery.FieldByName('domicile').AsString;
 
-    success := TPerson.TryGetNewTPerson(-1, name, lastname, domicile, person);
+    Success := TPerson.TryGetNewTPerson(-1, name, lastname, domicile, person);
   end;
-  Result := success;
+  Result := Success;
 end;
 
 function TPersonControllerDB.Count: integer;

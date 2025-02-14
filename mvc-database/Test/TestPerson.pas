@@ -59,8 +59,8 @@ var
 begin
   // TODO: Setup method call parameters
   ReturnValue := FPerson.TryGetNewTPerson(-1, '', '', '', Person);
-  assert(ReturnValue)  ;
-  assert(Person = nil)  ;
+  assert(ReturnValue);
+  assert(Person = nil);
   // TODO: Validate method results
 end;
 

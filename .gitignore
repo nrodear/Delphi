@@ -5,6 +5,8 @@ mvc-database/__history/*
 
 mvc-database/Sources/__history/*
 mvc-database/Test/Win32/**/*
+mvc-database/Test/__history/**/*
+mvc-database/Test/__recovery/**/*
 sonar-scanner/*
 
 mvc-database/Test/Win32/Debug/Project1UnitTests.exe
