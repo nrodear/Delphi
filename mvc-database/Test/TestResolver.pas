@@ -15,15 +15,15 @@ type
     procedure SetUp; override;
     procedure TearDown; override;
   public
-    procedure TestStart(Index: integer);
-    procedure TestSolve(Index: integer);
+    procedure TestStart(Index: Integer);
+    procedure TestSolve(Index: Integer);
   end;
 
 implementation
 
 procedure TestTResolver.SetUp;
 begin
-  FResolver := TResolver.Create();
+  FResolver := TResolver.Create;
 end;
 
 procedure TestTResolver.TearDown;
@@ -31,12 +31,12 @@ begin
 
 end;
 
-procedure TestTResolver.TestSolve(Index: integer);
+procedure TestTResolver.TestSolve(Index: Integer);
 begin
   FResolver.Start(1);
 end;
 
-procedure TestTResolver.TestStart(Index: integer);
+procedure TestTResolver.TestStart(Index: Integer);
 begin
 
 end;

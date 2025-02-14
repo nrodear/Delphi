@@ -62,7 +62,7 @@ begin
 
     // Run tests
     results := runner.Execute;
-    stopOnFailCL := true; //  not results.AllPassed;
+    stopOnFailCL := True; //  not results.AllPassed;
 
 {$IFNDEF CI}
     // We don't want this happening when running under CI.
@@ -77,7 +77,7 @@ begin
 {$ENDIF}
   except
     on E: Exception do
-      System.Writeln(E.ClassName, ': ', E.Message);
+      System.WriteLn(E.ClassName, ': ', E.Message);
   end;
 {$ENDIF}
 

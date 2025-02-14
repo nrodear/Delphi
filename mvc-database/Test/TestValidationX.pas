@@ -58,12 +58,12 @@ implementation
 
 procedure TMyTestObject.Test1;
 begin
-  Assert.IsTrue(FValidation.CheckTileSmall(FMatrixTest, 1, 1, false));
+  Assert.IsTrue(FValidation.CheckTileSmall(FMatrixTest, 1, 1, False));
 end;
 
 procedure TMyTestObject.Test2;
 begin
-  Assert.IsFalse(FValidation.CheckTileSmall(FMatrixTest, 1, 4, false));
+  Assert.IsFalse(FValidation.CheckTileSmall(FMatrixTest, 1, 4, False));
 
 end;
 
@@ -79,13 +79,13 @@ end;
 
 procedure TMyTestObject.TestYLine;
 begin
-  Assert.IsTrue(FValidation.CheckLine(FMatrixTest, Col, 1, false),
+  Assert.IsTrue(FValidation.CheckLine(FMatrixTest, Col, 1, False),
     'Should successful run because 1..9 values');
 end;
 
 procedure TMyTestObject.TestXLine;
 begin
-  Assert.IsFalse(FValidation.CheckLine(FMatrixTest, Row, 1, false),
+  Assert.IsFalse(FValidation.CheckLine(FMatrixTest, Row, 1, False),
     'Should fail because of multiple same numbers');
 end;
 

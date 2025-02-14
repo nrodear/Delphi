@@ -16,7 +16,7 @@ type
     procedure Add(const AFirstName, ALastName, ADomicile: string);
     procedure Delete(Index: Integer);
     function Get(Index: Integer): TPerson;
-    function Count: Integer;
+    function Count: NativeInt ;
   end;
 
 implementation
@@ -35,15 +35,15 @@ end;
 procedure TAddressController.Add(const AFirstName, ALastName,
   ADomicile: string);
 var
-  person: TPerson;
+  Person: TPerson;
   success: Boolean;
 begin
 
   success := TPerson.TryGetNewTPerson(-2, AFirstName, ALastName,
-    ADomicile, person);
+    ADomicile, Person);
   if success then
   begin
-    FPersons.Add(person);
+    FPersons.Add(Person);
   end;
 
 end;

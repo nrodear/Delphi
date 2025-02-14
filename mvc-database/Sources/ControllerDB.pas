@@ -31,9 +31,9 @@ type
     constructor Create;
     destructor Destroy; override;
     procedure Add(const AFirstName, ALastName, ADomicile: string);
-    procedure Delete(Index: integer);
-    function TryGet(Index: integer; person: TPerson): Boolean;
-    function Count: integer;
+    procedure Delete(Index: Integer);
+    function TryGet(Index: Integer; person: TPerson): Boolean;
+    function Count: Integer;
   end;
 
 implementation
@@ -55,15 +55,15 @@ begin
   // FPersons.Add(TPerson.Create(AFirstName, ALastName, ADomicile));
 end;
 
-procedure TPersonControllerDB.Delete(Index: integer);
+procedure TPersonControllerDB.Delete(Index: Integer);
 begin
   // if (Index >= 0) and (Index < FPersons.Count) then
   // FPersons.Delete(Index);
 end;
 
-function TPersonControllerDB.TryGet(Index: integer; person: TPerson): Boolean;
+function TPersonControllerDB.TryGet(Index: Integer; person: TPerson): Boolean;
 var
-  query: String;
+  query: string;
   name: string;
   lastname: string;
   domicile: string;
@@ -90,7 +90,7 @@ begin
   Result := Success;
 end;
 
-function TPersonControllerDB.Count: integer;
+function TPersonControllerDB.Count: Integer;
 begin
   // Result := FPersons.Count;
   Result := 0;

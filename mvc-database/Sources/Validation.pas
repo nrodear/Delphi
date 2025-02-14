@@ -9,22 +9,22 @@ type
   TValidation = class
 
   private
-    function Check(matrix: TMatrix; force: Boolean): Boolean;
+    function Check(Matrix: TMatrix; Force: Boolean): Boolean;
   public
 
-    function CheckTileSmall(matrix: TMatrix; startY: Integer; startX: Integer;
-      force: Boolean): Boolean;
-    function CheckLine(matrix: TMatrix; orientation: TOrientation; i: Integer;
-      force: Boolean): Boolean;
+    function CheckTileSmall(Matrix: TMatrix; StartY: Integer; StartX: Integer;
+      Force: Boolean): Boolean;
+    function CheckLine(Matrix: TMatrix; Orientation: TOrientation; I: Integer;
+      Force: Boolean): Boolean;
 
-    function SimpleCheck(matrix: TMatrix): Boolean;
-    function ForceCheck(matrix: TMatrix): Boolean;
+    function SimpleCheck(Matrix: TMatrix): Boolean;
+    function ForceCheck(Matrix: TMatrix): Boolean;
 
   end;
 
 implementation
 
-function TValidation.Check(matrix: TMatrix; force: Boolean): Boolean;
+function TValidation.Check(Matrix: TMatrix; Force: Boolean): Boolean;
 var
   i, J: Integer;
   Valid: Boolean;
@@ -32,8 +32,8 @@ begin
   Valid := True;
   for i := 1 to 9 do
   begin
-    Valid := Valid and CheckLine(matrix, Row, i, force) and
-      CheckLine(matrix, Col, i, force);
+    Valid := Valid and CheckLine(Matrix, Row, i, Force) and
+      CheckLine(Matrix, Col, i, Force);
     if not Valid then
     begin
       Break;
@@ -46,7 +46,7 @@ begin
   begin
     while J <= 9 do
     begin
-      Valid := Valid and CheckTileSmall(matrix, i, J, force);
+      Valid := Valid and CheckTileSmall(Matrix, i, J, Force);
       if (not Valid) then
       begin
         Break;
@@ -65,123 +65,123 @@ end;
 
 { TVatidation }
 
-function TValidation.CheckLine(matrix: TMatrix; orientation: TOrientation;
-  i: Integer; force: Boolean): Boolean;
+function TValidation.CheckLine(Matrix: TMatrix; Orientation: TOrientation;
+  I: Integer; Force: Boolean): Boolean;
 
 var
-  values: THashedStringList;
-  value: Integer;
-  J, found: Integer;
+  Values: THashedStringList;
+  Value: Integer;
+  J, Found: Integer;
 
 begin
 
   // setup hashed list
-  values := THashedStringList.Create; // in Inifiles
-  found := 0;
+  Values := THashedStringList.Create; // in Inifiles
+  Found := 0;
 
   // add to unique int list 1..9
   for J := 1 to 9 do
   begin
 
-    // get default value from col
-    value := matrix[J][i];
-    if orientation = Row then
+    // get default Value from col
+    Value := Matrix[J][I];
+    if Orientation = Row then
     begin
-      // get value from row
-      value := matrix[i][J];
+      // get Value from row
+      Value := Matrix[I][J];
     end;
 
-    if force and (value = 0) then
+    if Force and (Value = 0) then
     begin
       // validate for unique values  vs added
-      Result := false;
-      values.Destroy;
-      exit;
+      Result := False;
+      Values.Destroy;
+      Exit;
     end;
 
     // ignore empty fields
-    if not force and (value = 0) then
+    if not Force and (Value = 0) then
     begin
       Continue;
     end;
 
-    Inc(found);
-    if not values.Contains(IntToStr(value)) then
+    Inc(Found);
+    if not Values.Contains(IntToStr(Value)) then
     begin
-      values.add(IntToStr(value));
+      Values.add(IntToStr(Value));
     end;
 
   end;
   // validate for unique values  vs added
-  Result := values.count = found;
-  values.Destroy;
+  Result := Values.count = Found;
+  Values.Destroy;
 
 end;
 
-function TValidation.CheckTileSmall(matrix: TMatrix; startY: Integer;
-  startX: Integer; force: Boolean): Boolean;
+function TValidation.CheckTileSmall(Matrix: TMatrix; StartY: Integer;
+  StartX: Integer; Force: Boolean): Boolean;
 
 var
-  values: THashedStringList;
-  value: Integer;
-  isSame: Boolean;
-  X, Y, add: Integer;
+  Values: THashedStringList;
+  Value: Integer;
+  IsSame: Boolean;
+  X, Y, CounterItem: Integer;
   Size: Integer;
 begin
 
   // setup hashed list
-  values := THashedStringList.Create; // in Inifiles
-  add := 0;
+  Values := THashedStringList.Create; // in Inifiles
+  CounterItem := 0;
   // 3x3 tile
   Size := 3;
 
-  for Y := startY to startY + Size - 1 do
+  for Y := StartY to StartY + Size - 1 do
   begin
     // add to unique int list 1..9
-    for X := startX to startX + Size - 1 do
+    for X := StartX to StartX + Size - 1 do
     begin
       // add to unique int list 1..9
-      value := matrix[Y][X];
+      Value := Matrix[Y][X];
 
-      if force and (value = 0) then
+      if Force and (Value = 0) then
       begin
         // validate for unique values  vs added
-        Result := false;
-        values.Destroy;
-        exit;
+        Result := False;
+        Values.Destroy;
+        Exit;
       end;
 
       // ignore empty fields
-      if (value = 0) then
+      if (Value = 0) then
       begin
         Continue;
       end;
 
-      Inc(add);
-      if not values.Contains(IntToStr(value)) then
+      Inc(CounterItem);
+      if not Values.Contains(IntToStr(Value)) then
       begin
-        values.add(IntToStr(value));
+        Values.add(IntToStr(Value));
       end;
 
     end;
 
   end;
 
-  isSame := values.count = add;
-  values.Destroy;
+  IsSame := Values.count = CounterItem;
+  Values.Destroy;
   // validate for unique values  vs added
-  Result := isSame;
+  Result := IsSame;
 
 end;
 
-function TValidation.ForceCheck(matrix: TMatrix): Boolean;
+function TValidation.ForceCheck(Matrix: TMatrix): Boolean;
 begin
-  Result := Check(matrix, True);
+  Result := Check(Matrix, True);
 end;
 
-function TValidation.SimpleCheck(matrix: TMatrix): Boolean;
+function TValidation.SimpleCheck(Matrix: TMatrix): Boolean;
 begin
-  Result := Check(matrix, false);
+  Result := Check(Matrix, False);
 end;
 
 end.

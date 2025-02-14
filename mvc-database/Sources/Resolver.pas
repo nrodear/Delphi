@@ -3,119 +3,100 @@ unit Resolver;
 interface
 
 uses
-  SysUtils, Validation, BaseTypes, Consts;
-
-var
-  gIdResolver: integer;
+  Validation, BaseTypes, Consts,SysUtils;
 
 type
 
   TResolver = class
 
   var
-    validator: TValidation;
+    Validator: TValidation;
+  private
+    DateTimeStart: TDateTime;
   public
-    IdResolver: integer;
-    StartTime: TDateTime;
-    constructor Create;
-    destructor Destroy; override;
     procedure Start(SolveMatrix: TMatrix);
-
   end;
 
-function Solve(SolveMatrix: TMatrix; pIdResolver: integer): TTryGetMatrix;
+function Solve(SolveMatrix: TMatrix; Id: Integer): TTryGetMatrix;
 
 implementation
 
-constructor TResolver.Create;
-begin
-  IdResolver := gIdResolver;
-  Inc(gIdResolver);
-end;
-
-destructor TResolver.Destroy;
-begin
-
-  inherited;
-end;
 
 procedure TResolver.Start(SolveMatrix: TMatrix);
 var
   TimeDiff: Double;
-  tryGet: TTryGetMatrix;
-  Caption: String;
+  _: TTryGetMatrix;
+  Caption: string;
 begin
-  StartTime := now;
-  gIdResolver := 0;
+  DateTimeStart := Now;
   // check given puzzle
-  tryGet := Solve(SolveMatrix, gIdResolver);
+  _ := Solve(SolveMatrix, 1);
 
-  TimeDiff := now - StartTime;
+  TimeDiff := Now - DateTimeStart;
   Caption := FormatDateTime('dd hh:nn:ss', TimeDiff) ;
-  writeln('done #' + Caption );
+  WriteLn('done #' + Caption );
 
 end;
 
-function Solve(SolveMatrix: TMatrix; pIdResolver: integer): TTryGetMatrix;
+function Solve(SolveMatrix: TMatrix; Id: Integer): TTryGetMatrix;
 var
-  I, J, Value: integer;
+  CoOrdI, CoOrdJ, Value: Integer;
   Valid: Boolean;
   Matrix: TMatrix;
-  tryGet: TTryGetMatrix;
-  validator: TValidation;
-  IdResolver: integer;
+  TryGet: TTryGetMatrix;
+  Validator: TValidation;
+  CurrentId: Integer;
 
 begin
-  IdResolver := pIdResolver + 1;
-  validator := TValidation.Create;
-  //writeln('Solve #' + IntToStr(IdResolver));
+  CurrentId := Id + 1;
+  Validator := TValidation.Create;
 
-  if validator.ForceCheck(SolveMatrix) then
+  if Validator.ForceCheck(SolveMatrix) then
   begin
-    Result := TTryGetMatrix.Create(True, SolveMatrix);
-    exit;
+    Result := TTryGetMatrix.Create(SolveMatrix, True);
+    Exit;
   end;
 
-  Valid := validator.SimpleCheck(SolveMatrix);
+  Valid := Validator.SimpleCheck(SolveMatrix);
   Matrix := SolveMatrix;
-  Result := TTryGetMatrix.Create(Valid, SolveMatrix);
+  Result := TTryGetMatrix.Create(SolveMatrix, Valid);
 
   if Valid then
   begin
 
-    for I := 1 to 9 do
+    for CoOrdI := 1 to 9 do
     begin
 
-      if not validator.SimpleCheck(Matrix) then
+      if not Validator.SimpleCheck(Matrix) then
       begin
-        Result := TTryGetMatrix.Create(False, SolveMatrix);
-        exit;
+        Result := TTryGetMatrix.Create(SolveMatrix, False);
+        Exit;
       end;
 
-      for J := 1 to 9 do
+      for CoOrdJ := 1 to 9 do
       begin
 
-        if not validator.SimpleCheck(Matrix) then
+        if not Validator.SimpleCheck(Matrix) then
         begin
-          Result := TTryGetMatrix.Create(False, SolveMatrix);
-          exit;
+          Result := TTryGetMatrix.Create(SolveMatrix, False);
+          Exit;
         end;
 
-        // exists any value but 0
-        if Matrix[I][J] <> NotSet then
+        // exists any Value but 0
+        if Matrix[CoOrdI][CoOrdJ] <> NotSet then
           Continue;
 
-        // set new value in coordinate x,y
+        // set new Value in coordinate x,y
         for Value := 1 to 9 do
         begin
-          // set value
-          Matrix[I][J] := Value;
-          tryGet := Solve(Matrix, IdResolver);
+          // set Value
+          Matrix[CoOrdI][CoOrdJ] := Value;
+          TryGet := Solve(Matrix, CurrentId);
 
-          if tryGet.FIsValid then
+          if TryGet.FIsValid then
           begin
-            Result := TTryGetMatrix.Create(True, tryGet.FMatrix);
-            exit;
+            Result := TTryGetMatrix.Create(TryGet.FMatrix, True);
+            Exit;
           end;
 
         end;
@@ -125,7 +106,7 @@ begin
     raise Exception.Create('some test');
   end;
 
-  validator.Free;
+  Validator.Free;
 end;
 
 end.

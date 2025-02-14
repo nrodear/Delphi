@@ -9,7 +9,7 @@ Type
   ECheckException = class
     constructor Create;
   public
-    class procedure Throw(param: integer); overload;
+    class procedure Throw(param: Integer); overload;
     class procedure Throw(param: string); overload;
   end;
 
@@ -20,7 +20,7 @@ begin
   raise Exception.Create('Error constructor ECheckException; dont use this;');
 end;
 
-class procedure ECheckException.Throw(param: integer);
+class procedure ECheckException.Throw(param: Integer);
 begin
   raise Exception.Create(format('This is an exception with param %d', [param]));
 end;

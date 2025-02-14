@@ -8,23 +8,23 @@ uses
 type
   TPerson = class
   private
-    FID2: integer;
-    FID: integer;
+    FID2: Integer;
+    FID: Integer;
     FFirstName: string;
     FLastName: string;
     FDomicile: string;
-    constructor Create(Id: integer; AFirstName, ALastName,
+    constructor Create(Id: Integer; AFirstName, ALastName,
       ADomicile: string); overload;
     constructor Create; overload;
 
   public
-    property Id: integer read FID write FID;
+    property Id: Integer read FID write FID;
     property FirstName: string read FFirstName write FFirstName;
     property LastName: string read FLastName write FLastName;
     property Domicile: string read FDomicile write FDomicile;
 
     class function TryGet: Boolean;
-    class function TryGetNewTPerson(Id: integer;
+    class function TryGetNewTPerson(Id: Integer;
       AFirstName, ALastName, ADomicile: string; out Person: TPerson): Boolean;
   end;
 
@@ -35,7 +35,7 @@ begin
   FID := -1;
 end;
 
-constructor TPerson.Create(Id: integer;
+constructor TPerson.Create(Id: Integer;
   AFirstName, ALastName, ADomicile: string);
 begin
   FID := Id;
@@ -44,15 +44,15 @@ begin
   FDomicile := ADomicile;
 end;
 
-class function TPerson.TryGetNewTPerson(Id: integer;
+class function TPerson.TryGetNewTPerson(Id: Integer;
   AFirstName, ALastName, ADomicile: string; out Person: TPerson): Boolean;
 var
   check: Boolean;
 begin
-  check := true;
-  check := check and (length(AFirstName) = 0);
-  check := check and (length(ALastName) = 0);
-  check := check and (length(ADomicile) = 0);
+  check := True;
+  check := check and (Length(AFirstName) = 0);
+  check := check and (Length(ALastName) = 0);
+  check := check and (Length(ADomicile) = 0);
 
   Person := nil;
   if check then
@@ -62,9 +62,9 @@ begin
   Result := check;
 end;
 
-class function TPerson.TryGet(): Boolean;
+class function TPerson.TryGet: Boolean;
 begin
-  Result := true;
+  Result := True;
 end;
 
 end.
