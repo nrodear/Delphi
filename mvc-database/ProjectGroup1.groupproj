@@ -4,13 +4,13 @@
     </PropertyGroup>
     <ItemGroup>
         <Projects Include="Project1.dproj">
-            <Dependencies/>
+            <Dependencies>Project3.dproj</Dependencies>
         </Projects>
         <Projects Include="Project3.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="Project2.dproj">
-            <Dependencies/>
+            <Dependencies>Project3.dproj</Dependencies>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -20,13 +20,13 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="Project1">
+    <Target Name="Project1" DependsOnTargets="Project3">
         <MSBuild Projects="Project1.dproj"/>
     </Target>
-    <Target Name="Project1:Clean">
+    <Target Name="Project1:Clean" DependsOnTargets="Project3:Clean">
         <MSBuild Projects="Project1.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Project1:Make">
+    <Target Name="Project1:Make" DependsOnTargets="Project3:Make">
         <MSBuild Projects="Project1.dproj" Targets="Make"/>
     </Target>
     <Target Name="Project3">
@@ -38,13 +38,13 @@
     <Target Name="Project3:Make">
         <MSBuild Projects="Project3.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Project2">
+    <Target Name="Project2" DependsOnTargets="Project3">
         <MSBuild Projects="Project2.dproj"/>
     </Target>
-    <Target Name="Project2:Clean">
+    <Target Name="Project2:Clean" DependsOnTargets="Project3:Clean">
         <MSBuild Projects="Project2.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Project2:Make">
+    <Target Name="Project2:Make" DependsOnTargets="Project3:Make">
         <MSBuild Projects="Project2.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">

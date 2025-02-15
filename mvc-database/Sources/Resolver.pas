@@ -3,7 +3,7 @@ unit Resolver;
 interface
 
 uses
-  Validation, BaseTypes, Consts,SysUtils;
+  Validation, BaseTypes, Consts;
 
 type
 
@@ -12,7 +12,7 @@ type
   var
     Validator: TValidation;
   private
-    DateTimeStart: TDateTime;
+    Launch: TDateTime;
   public
     procedure Start(SolveMatrix: TMatrix);
   end;
@@ -21,20 +21,21 @@ function Solve(SolveMatrix: TMatrix; Id: Integer): TTryGetMatrix;
 
 implementation
 
+uses
+   SysUtils;
 
 procedure TResolver.Start(SolveMatrix: TMatrix);
 var
   TimeDiff: Double;
-  _: TTryGetMatrix;
   Caption: string;
 begin
-  DateTimeStart := Now;
+  Launch := Now;
   // check given puzzle
-  _ := Solve(SolveMatrix, 1);
+  Solve(SolveMatrix, 1);
 
-  TimeDiff := Now - DateTimeStart;
-  Caption := FormatDateTime('dd hh:nn:ss', TimeDiff) ;
-  WriteLn('done #' + Caption );
+  TimeDiff := Now - Launch;
+  Caption := FormatDateTime('dd hh:nn:ss', TimeDiff);
+  WriteLn('done #' + Caption);
 
 end;
 

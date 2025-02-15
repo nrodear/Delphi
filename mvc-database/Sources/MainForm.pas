@@ -17,6 +17,7 @@ uses
   FireDAC.VCLUI.Error,
   FireDAC.Stan.Error,
   FireDAC.VCLUI.Wait,
+
   FireDAC.Stan.Intf;
 
 type
@@ -30,6 +31,7 @@ type
     BtnClose: TButton;
     FDGUIxErrorDialog1: TFDGUIxErrorDialog;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure BtnAddClick(Sender: TObject);
     procedure BtnDeleteClick(Sender: TObject);
@@ -84,6 +86,8 @@ begin
     RefreshListView;
   end;
 end;
+
+
 
 procedure TFormMain.RefreshListView;
 var

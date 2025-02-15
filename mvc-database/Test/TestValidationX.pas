@@ -36,7 +36,10 @@ type
   var
     FValidation: TValidation;
   public
-
+    [Setup]
+    procedure Setup;
+    [TearDown]
+    procedure TearDown;
     // Simple single Test
     [Test]
     procedure Test1;
@@ -55,6 +58,16 @@ type
   end;
 
 implementation
+
+procedure TMyTestObject.Setup;
+begin
+     FValidation := TValidation.Create;
+end;
+
+procedure TMyTestObject.TearDown;
+begin
+     FValidation.Destroy;
+end;
 
 procedure TMyTestObject.Test1;
 begin

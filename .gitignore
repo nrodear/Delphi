@@ -14,3 +14,4 @@ mvc-database/.scannerwork/.sonar_lock
 
 **/*.dcu
 **/*.exe
+mvc-database/.scannerwork/report-task.txt

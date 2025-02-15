@@ -8,10 +8,13 @@ uses
 type
   TValidation = class
 
+  var
+    Values: THashedStringList;
   private
     function Check(Matrix: TMatrix; Force: Boolean): Boolean;
   public
-
+    constructor Create;
+    destructor Destroy;
     function CheckTileSmall(Matrix: TMatrix; StartY: Integer; StartX: Integer;
       Force: Boolean): Boolean;
     function CheckLine(Matrix: TMatrix; Orientation: TOrientation; I: Integer;
@@ -26,27 +29,27 @@ implementation
 
 function TValidation.Check(Matrix: TMatrix; Force: Boolean): Boolean;
 var
-  i, J: Integer;
+  I, J: Integer;
   Valid: Boolean;
 begin
   Valid := True;
-  for i := 1 to 9 do
+  for I := 1 to 9 do
   begin
-    Valid := Valid and CheckLine(Matrix, Row, i, Force) and
-      CheckLine(Matrix, Col, i, Force);
+    Valid := Valid and CheckLine(Matrix, Row, I, Force) and
+      CheckLine(Matrix, Col, I, Force);
     if not Valid then
     begin
       Break;
     end;
   end;
 
-  i := 1;
+  I := 1;
   J := 1;
-  while i <= 9 do
+  while I <= 9 do
   begin
     while J <= 9 do
     begin
-      Valid := Valid and CheckTileSmall(Matrix, i, J, Force);
+      Valid := Valid and CheckTileSmall(Matrix, I, J, Force);
       if (not Valid) then
       begin
         Break;
@@ -57,7 +60,7 @@ begin
     begin
       Break;
     end;
-    i := i + 3;
+    I := I + 3;
   end;
 
   Result := Valid;
@@ -69,14 +72,13 @@ function TValidation.CheckLine(Matrix: TMatrix; Orientation: TOrientation;
   I: Integer; Force: Boolean): Boolean;
 
 var
-  Values: THashedStringList;
   Value: Integer;
   J, Found: Integer;
 
 begin
 
   // setup hashed list
-  Values := THashedStringList.Create; // in Inifiles
+  Values.Clear;
   Found := 0;
 
   // add to unique int list 1..9
@@ -95,7 +97,6 @@ begin
     begin
       // validate for unique values  vs added
       Result := False;
-      Values.Destroy;
       Exit;
     end;
 
@@ -114,15 +115,12 @@ begin
   end;
   // validate for unique values  vs added
   Result := Values.count = Found;
-  Values.Destroy;
 
 end;
 
 function TValidation.CheckTileSmall(Matrix: TMatrix; StartY: Integer;
   StartX: Integer; Force: Boolean): Boolean;
-
 var
-  Values: THashedStringList;
   Value: Integer;
   IsSame: Boolean;
   X, Y, CounterItem: Integer;
@@ -130,7 +128,8 @@ var
 begin
 
   // setup hashed list
-  Values := THashedStringList.Create; // in Inifiles
+  Values.Clear;
+
   CounterItem := 0;
   // 3x3 tile
   Size := 3;
@@ -147,7 +146,6 @@ begin
       begin
         // validate for unique values  vs added
         Result := False;
-        Values.Destroy;
         Exit;
       end;
 
@@ -168,10 +166,21 @@ begin
   end;
 
   IsSame := Values.count = CounterItem;
-  Values.Destroy;
+
   // validate for unique values  vs added
   Result := IsSame;
 
+end;
+
+constructor TValidation.Create;
+begin
+  Values := THashedStringList.Create();
+end;
+
+destructor TValidation.Destroy;
+begin
+  Values.Destroy;
+  inherited;
 end;
 
 function TValidation.ForceCheck(Matrix: TMatrix): Boolean;
