@@ -22,20 +22,12 @@ function Solve(SolveMatrix: TMatrix; Id: Integer): TTryGetMatrix;
 implementation
 
 uses
-   SysUtils;
+  SysUtils;
 
 procedure TResolver.Start(SolveMatrix: TMatrix);
-var
-  TimeDiff: Double;
-  Caption: string;
 begin
-  Launch := Now;
   // check given puzzle
   Solve(SolveMatrix, 1);
-
-  TimeDiff := Now - Launch;
-  Caption := FormatDateTime('dd hh:nn:ss', TimeDiff);
-  WriteLn('done #' + Caption);
 
 end;
 

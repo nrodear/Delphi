@@ -72,12 +72,13 @@ object FormMain: TFormMain
     OnClick = BtnCloseClick
   end
   object Button1: TButton
-    Left = 437
+    Left = 441
     Top = 208
     Width = 75
     Height = 25
     Caption = 'Button1'
     TabOrder = 7
+    OnClick = Button1Click
   end
   object FDGUIxErrorDialog1: TFDGUIxErrorDialog
     Provider = 'Forms'

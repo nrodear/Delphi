@@ -17,7 +17,6 @@ uses
   FireDAC.VCLUI.Error,
   FireDAC.Stan.Error,
   FireDAC.VCLUI.Wait,
-
   FireDAC.Stan.Intf;
 
 type
@@ -36,6 +35,7 @@ type
     procedure BtnAddClick(Sender: TObject);
     procedure BtnDeleteClick(Sender: TObject);
     procedure BtnCloseClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     FController: TAddressController;
     PersonControllerDB: TPersonControllerDB;
@@ -49,6 +49,10 @@ var
 implementation
 
 {$R *.dfm}
+
+uses
+  Resolver,
+  Consts;
 
 procedure TFormMain.FormCreate(Sender: TObject);
 begin
@@ -87,7 +91,13 @@ begin
   end;
 end;
 
-
+procedure TFormMain.Button1Click(Sender: TObject);
+var
+  FResolver: TResolver;
+begin
+  FResolver := TResolver.Create;
+  FResolver.Start(FMatrixSimple);
+end;
 
 procedure TFormMain.RefreshListView;
 var

@@ -14,7 +14,7 @@ type
     function Check(Matrix: TMatrix; Force: Boolean): Boolean;
   public
     constructor Create;
-    destructor Destroy;
+    destructor Destroy; override;
     function CheckTileSmall(Matrix: TMatrix; StartY: Integer; StartX: Integer;
       Force: Boolean): Boolean;
     function CheckLine(Matrix: TMatrix; Orientation: TOrientation; I: Integer;
@@ -174,7 +174,7 @@ end;
 
 constructor TValidation.Create;
 begin
-  Values := THashedStringList.Create();
+  Values := THashedStringList.Create;
 end;
 
 destructor TValidation.Destroy;
