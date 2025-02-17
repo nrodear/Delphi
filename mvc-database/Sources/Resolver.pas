@@ -3,7 +3,7 @@ unit Resolver;
 interface
 
 uses
-  Validation, BaseTypes, Consts;
+  Validation, BaseTypes, Consts, DateUtils;
 
 type
 
@@ -11,8 +11,6 @@ type
 
   var
     Validator: TValidation;
-  private
-    Launch: TDateTime;
   public
     procedure Start(SolveMatrix: TMatrix);
   end;
@@ -22,7 +20,7 @@ function Solve(SolveMatrix: TMatrix; Id: Integer): TTryGetMatrix;
 implementation
 
 uses
-  SysUtils;
+  SysUtils, TimeUtils;
 
 procedure TResolver.Start(SolveMatrix: TMatrix);
 begin
@@ -39,45 +37,43 @@ var
   TryGet: TTryGetMatrix;
   Validator: TValidation;
   CurrentId: Integer;
+  StartTime: TDateTime;
 
 begin
   CurrentId := Id + 1;
   Validator := TValidation.Create;
 
-  if Validator.ForceCheck(SolveMatrix) then
-  begin
-    Result := TTryGetMatrix.Create(SolveMatrix, True);
+  Result := GetMatrix(SolveMatrix, True);
+  Valid := Validator.ForceCheck(SolveMatrix);
+
+  if Valid then
     Exit;
-  end;
 
-  Valid := Validator.SimpleCheck(SolveMatrix);
+  Valid := True;
   Matrix := SolveMatrix;
-  Result := TTryGetMatrix.Create(SolveMatrix, Valid);
 
+  StartTime := Now;
   if Valid then
   begin
 
     for CoOrdI := 1 to 9 do
     begin
 
-      if not Validator.SimpleCheck(Matrix) then
-      begin
-        Result := TTryGetMatrix.Create(SolveMatrix, False);
-        Exit;
-      end;
-
       for CoOrdJ := 1 to 9 do
       begin
 
         if not Validator.SimpleCheck(Matrix) then
         begin
-          Result := TTryGetMatrix.Create(SolveMatrix, False);
+          Result := GetMatrix(SolveMatrix, false);
+          Duration(StartTime, Now, CurrentId);
           Exit;
         end;
 
         // exists any Value but 0
         if Matrix[CoOrdI][CoOrdJ] <> NotSet then
+        begin
           Continue;
+        end;
 
         // set new Value in coordinate x,y
         for Value := 1 to 9 do
@@ -85,13 +81,12 @@ begin
           // set Value
           Matrix[CoOrdI][CoOrdJ] := Value;
           TryGet := Solve(Matrix, CurrentId);
-
           if TryGet.FIsValid then
           begin
-            Result := TTryGetMatrix.Create(TryGet.FMatrix, True);
+            Result := GetMatrix(TryGet.FMatrix, True);
+            Duration(StartTime, Now, CurrentId);
             Exit;
           end;
-
         end;
       end;
     end;

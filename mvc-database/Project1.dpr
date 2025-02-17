@@ -7,13 +7,12 @@ uses
   ControllerDB in 'Sources\ControllerDB.pas',
   Person in 'Sources\Person.pas',
   SingletonDB in 'Sources\SingletonDB.pas',
-
-    BaseTypes in 'Sources\BaseTypes.pas',
+  BaseTypes in 'Sources\BaseTypes.pas',
   Consts in 'Sources\Consts.pas',
   Validation in 'Sources\Validation.pas',
   Resolver in 'Sources\Resolver.pas',
-
-  MainForm in 'Sources\MainForm.pas' {FormMain};
+  MainForm in 'Sources\MainForm.pas' {FormMain},
+  TimeUtils in 'Sources\TimeUtils.pas';
 
 {$R *.res}
 

@@ -3,7 +3,8 @@ unit TestBaseTypesX;
 interface
 
 uses
-  DUnitX.TestFramework, Resolver, Consts;
+  Resolver, Consts, BaseTypes, System.SysUtils, DateUtils,
+  DUnitX.TestFramework, System.Diagnostics;
 
 var
 
@@ -29,6 +30,8 @@ type
 
   end;
 
+  procedure TestDuration(StartTime, EndTime: TDateTime);
+
 implementation
 
 { TTestBaseTypes }
@@ -43,6 +46,20 @@ begin
   assert.AreNotEqual(MatA[1][1], TMatrixxyz[1][1]);
 
 end;
+
+procedure TestDuration(StartTime, EndTime: TDateTime);
+
+var
+  duationSec : integer;
+  Text: String;
+begin
+
+  duationSec := SecondsBetween(StartTime, EndTime);
+  Text := '       Sec: ' + IntToStr(duationSec) ;
+  WriteLn(Text);
+
+end;
+
 
 initialization
 

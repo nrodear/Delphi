@@ -108,6 +108,7 @@
         <DCCReference Include="Sources\Consts.pas"/>
         <DCCReference Include="Sources\Validation.pas"/>
         <DCCReference Include="Sources\BaseTypes.pas"/>
+        <DCCReference Include="Sources\TimeUtils.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

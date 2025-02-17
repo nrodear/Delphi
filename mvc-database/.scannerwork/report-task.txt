@@ -2,5 +2,5 @@ projectKey=My-Delphi-Prj
 serverUrl=http://ubuntu24:9000
 serverVersion=25.1.0.102122
 dashboardUrl=http://ubuntu24:9000/dashboard?id=My-Delphi-Prj
-ceTaskId=fc90e7b3-e14e-4c21-b26d-7c443f1f6c8b
-ceTaskUrl=http://ubuntu24:9000/api/ce/task?id=fc90e7b3-e14e-4c21-b26d-7c443f1f6c8b
+ceTaskId=ad12f948-5e62-4220-992f-3bb487bccbb0
+ceTaskUrl=http://ubuntu24:9000/api/ce/task?id=ad12f948-5e62-4220-992f-3bb487bccbb0

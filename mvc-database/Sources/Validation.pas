@@ -3,7 +3,7 @@ unit Validation;
 interface
 
 uses
-  BaseTypes, Inifiles, SysUtils, Consts, System.Classes;
+  BaseTypes, Inifiles, SysUtils, Consts, System.Classes, TimeUtils;
 
 type
   TValidation = class
@@ -12,6 +12,7 @@ type
     Values: THashedStringList;
   private
     function Check(Matrix: TMatrix; Force: Boolean): Boolean;
+    function CheckBase(Matrix: TMatrix; Force: Boolean): Boolean;
   public
     constructor Create;
     destructor Destroy; override;
@@ -29,17 +30,37 @@ implementation
 
 function TValidation.Check(Matrix: TMatrix; Force: Boolean): Boolean;
 var
+  StartTime: TDateTime;
+begin
+  StartTime := now;
+  result := CheckBase(Matrix, Force);
+  //Duration(StartTime, now, -1);
+end;
+
+function TValidation.CheckBase(Matrix: TMatrix; Force: Boolean): Boolean;
+var
   I, J: Integer;
   Valid: Boolean;
+
 begin
+  if DebugAsTest then
+    Writeln('.');
+
   Valid := True;
   for I := 1 to 9 do
   begin
-    Valid := Valid and CheckLine(Matrix, Row, I, Force) and
-      CheckLine(Matrix, Col, I, Force);
+    Valid := Valid and CheckLine(Matrix, Row, I, Force);
     if not Valid then
     begin
-      Break;
+      result := Valid;
+      exit;
+    end;
+
+    Valid := Valid and CheckLine(Matrix, Col, I, Force);
+    if not Valid then
+    begin
+      result := Valid;
+      exit;
     end;
   end;
 
@@ -52,18 +73,20 @@ begin
       Valid := Valid and CheckTileSmall(Matrix, I, J, Force);
       if (not Valid) then
       begin
-        Break;
+        result := Valid;
+        exit;
       end;
       J := J + 3;
     end;
     if (not Valid) then
     begin
-      Break;
+      result := Valid;
+      exit;
     end;
     I := I + 3;
   end;
 
-  Result := Valid;
+  result := Valid;
 end;
 
 { TVatidation }
@@ -96,8 +119,8 @@ begin
     if Force and (Value = 0) then
     begin
       // validate for unique values  vs added
-      Result := False;
-      Exit;
+      result := False;
+      exit;
     end;
 
     // ignore empty fields
@@ -114,7 +137,7 @@ begin
 
   end;
   // validate for unique values  vs added
-  Result := Values.count = Found;
+  result := Values.count = Found;
 
 end;
 
@@ -145,8 +168,8 @@ begin
       if Force and (Value = 0) then
       begin
         // validate for unique values  vs added
-        Result := False;
-        Exit;
+        result := False;
+        exit;
       end;
 
       // ignore empty fields
@@ -168,7 +191,7 @@ begin
   IsSame := Values.count = CounterItem;
 
   // validate for unique values  vs added
-  Result := IsSame;
+  result := IsSame;
 
 end;
 
@@ -185,12 +208,12 @@ end;
 
 function TValidation.ForceCheck(Matrix: TMatrix): Boolean;
 begin
-  Result := Check(Matrix, True);
+  result := Check(Matrix, True);
 end;
 
 function TValidation.SimpleCheck(Matrix: TMatrix): Boolean;
 begin
-  Result := Check(Matrix, False);
+  result := Check(Matrix, False);
 end;
 
 end.

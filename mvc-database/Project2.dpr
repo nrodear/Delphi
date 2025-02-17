@@ -7,12 +7,12 @@ program Project2;
 
 uses
   System.SysUtils,
-{$IFDEF TESTINSIGHT}
+  {$IFDEF TESTINSIGHT}
   TestInsight.DUnitX,
-{$ELSE}
+  {$ELSE}
   DUnitX.Loggers.Console,
   DUnitX.Loggers.Xml.NUnit,
-{$ENDIF }
+  {$ENDIF }
   DUnitX.TestFramework,
   BaseTypes in 'Sources\BaseTypes.pas',
   Consts in 'Sources\Consts.pas',
@@ -20,7 +20,8 @@ uses
   Resolver in 'Sources\Resolver.pas',
   TestBaseTypesX in 'Test\TestBaseTypesX.pas',
   TestValidationX in 'Test\TestValidationX.pas',
-  TestResolverX in 'Test\TestResolverX.pas';
+  TestResolverX in 'Test\TestResolverX.pas',
+  TimeUtils in 'Sources\TimeUtils.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 {$IFNDEF TESTINSIGHT}

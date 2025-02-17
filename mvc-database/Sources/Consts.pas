@@ -8,6 +8,7 @@ type
   TOrientation = (Row = 1, Col = 2);
 
 var
+  DebugAsTest:  Boolean = False;
 
   NotSet: Integer = 0;
 

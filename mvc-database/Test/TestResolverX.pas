@@ -3,10 +3,9 @@ unit TestResolverX;
 interface
 
 uses
-  DUnitX.TestFramework, Resolver, Consts;
+  DUnitX.TestFramework, Resolver, Consts, System.SysUtils, DateUtils;
 
 var
-
   FMatrixSimpleTest: TMatrix = ( // type by
     (3, 4, 0, 2, 6, 0, 7, 0, 1), // line 1
     (6, 8, 0, 0, 7, 0, 0, 9, 0), // line 2
@@ -36,10 +35,14 @@ type
 
 implementation
 
+uses
+  TestBaseTypesX;
+
 { TTestResolver }
 
 procedure TTestResolver.Setup;
 begin
+  DebugAsTest := False;
   FResolver := TResolver.Create;
 end;
 
@@ -49,9 +52,12 @@ begin
 end;
 
 procedure TTestResolver.TestSimpleResolve;
+var
+  StartTime: TDateTime;
 begin
-
+  StartTime := Now;
   FResolver.Start(FMatrixSimple);
+  TestDuration(StartTime, Now);
 end;
 
 initialization

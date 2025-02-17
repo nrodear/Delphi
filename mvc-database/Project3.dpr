@@ -21,7 +21,8 @@ uses
   Resolver in 'Sources\Resolver.pas',
   Consts in 'Sources\Consts.pas',
   Validation in 'Sources\Validation.pas',
-  BaseTypes in 'Sources\BaseTypes.pas';
+  BaseTypes in 'Sources\BaseTypes.pas',
+  TimeUtils in 'Sources\TimeUtils.pas';
 
 {$R *.res}
 
