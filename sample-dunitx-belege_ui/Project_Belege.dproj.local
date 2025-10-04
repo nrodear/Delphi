@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.951,C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit4.pas=D:\git-demos\delphi\sample-dunitx-belege\sources\BelegeUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.874,=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit4.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.346,D:\git-demos\delphi\sample-dunitx-belege\sources\Project_Belege.dproj=D:\git-demos\delphi\sample-dunitx-belege\Project_Belege.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.994,=D:\git-demos\delphi\sample-dunitx-belege_ui\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.418,C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Project2.dproj=D:\git-demos\delphi\sample-dunitx-belege\sources\Project_Belege.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.114,D:\git-demos\delphi\sample-dunitx-belege_ui\Unit3.dfm=D:\git-demos\delphi\sample-dunitx-belege_ui\sources\FrameKommentar.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.575,=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.622,C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit3.pas=D:\git-demos\delphi\sample-dunitx-belege\sources\BelegUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.539,C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.pas=D:\git-demos\delphi\sample-dunitx-belege\sources\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.482,D:\git-demos\delphi\sample-dunitx-belege_ui\sources\FrameKommentar.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.114,D:\git-demos\delphi\sample-dunitx-belege_ui\Unit3.pas=D:\git-demos\delphi\sample-dunitx-belege_ui\sources\FrameKommentar.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.713,=D:\git-demos\delphi\sample-dunitx-belege_ui\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.022,D:\git-demos\delphi\sample-dunitx-belege_ui\Unit1.pas=D:\git-demos\delphi\sample-dunitx-belege_ui\sources\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.539,C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.dfm=D:\git-demos\delphi\sample-dunitx-belege\sources\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.567,=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.372,=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.pas</Transaction>
+  </Transactions>
+</BorlandProject>

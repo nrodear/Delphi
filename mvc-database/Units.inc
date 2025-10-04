@@ -1,0 +1,11 @@
+  BaseTypes in 'Sources\BaseTypes.pas',
+  CheckException in 'Sources\CheckException.pas',
+  Consts in 'Sources\Consts.pas',
+  Controller in 'Sources\Controller.pas',
+  ControllerDB in 'Sources\ControllerDB.pas',
+  MainForm in 'Sources\MainForm.pas' {FormMain},
+  Person in 'Sources\Person.pas',
+  Resolver in 'Sources\Resolver.pas',
+  SingletonDB in 'Sources\SingletonDB.pas',
+  TimeUtils in 'Sources\TimeUtils.pas',
+  Validation in 'Sources\Validation.pas'

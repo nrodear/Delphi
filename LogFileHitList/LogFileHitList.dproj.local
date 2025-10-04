@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2025.06.19 23:13:25.549,=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.pas</Transaction>
+    <Transaction>2025.06.19 23:13:50.391,C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\LogFileHitList.dproj=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Project2.dproj</Transaction>
+    <Transaction>2025.06.19 23:14:55.634,D:\git-demos\delphi\LogFileHitList\Unit2.pas=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.pas</Transaction>
+    <Transaction>2025.06.19 23:14:55.634,D:\git-demos\delphi\LogFileHitList\Unit2.dfm=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.dfm</Transaction>
+    <Transaction>2025.06.19 23:14:57.897,D:\git-demos\delphi\LogFileHitList\LogFileHitList.dproj=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\LogFileHitList.dproj</Transaction>
+    <Transaction>2025.06.19 23:24:18.487,=D:\git-demos\delphi\LogFileHitList\Unit1.pas</Transaction>
+    <Transaction>2025.06.19 23:24:34.179,D:\git-demos\delphi\LogFileHitList\parser.pas=D:\git-demos\delphi\LogFileHitList\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

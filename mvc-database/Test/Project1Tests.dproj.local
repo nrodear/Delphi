@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.991,=D:\git-demos\delphi\mvc-database\Test\TestOracleDB.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.417,=D:\git-demos\delphi\mvc-database\Test\SQLiteTest.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.038,=D:\git-demos\delphi\mvc-database\Test\TestResolverX.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.958,=D:\git-demos\delphi\mvc-database\Test\TestBaseTypesX.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.052,=D:\git-demos\delphi\mvc-database\Test\TestTimeUtils.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.068,=D:\git-demos\delphi\mvc-database\Test\TestUtils.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.639,D:\git-demos\delphi\mvc-database\Test\TestUtils.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.101,=D:\git-demos\delphi\mvc-database\Test\TestValidationX.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.431,=D:\git-demos\delphi\mvc-database\Test\SQLiteTestMemory.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.006,=D:\git-demos\delphi\mvc-database\Test\TestPerson.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.259,=D:\git-demos\delphi\mvc-database\Sources\Consts.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.588,D:\git-demos\delphi\mvc-database\Sources\Consts.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.755,=D:\git-demos\delphi\mvc-database\Sources\Consts.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.016,D:\git-demos\delphi\mvc-database\Sources\Consts.pas=</Transaction>
+  </Transactions>
+</BorlandProject>
