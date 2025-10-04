@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7AF1B3F5-340F-429B-B800-65F0D794E98E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="qr-builder-pkg\Package1.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="qr-builder-demo\Project2.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Package1">
+        <MSBuild Projects="qr-builder-pkg\Package1.dproj"/>
+    </Target>
+    <Target Name="Package1:Clean">
+        <MSBuild Projects="qr-builder-pkg\Package1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Package1:Make">
+        <MSBuild Projects="qr-builder-pkg\Package1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project2">
+        <MSBuild Projects="qr-builder-demo\Project2.dproj"/>
+    </Target>
+    <Target Name="Project2:Clean">
+        <MSBuild Projects="qr-builder-demo\Project2.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project2:Make">
+        <MSBuild Projects="qr-builder-demo\Project2.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Package1;Project2"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Package1:Clean;Project2:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Package1:Make;Project2:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
