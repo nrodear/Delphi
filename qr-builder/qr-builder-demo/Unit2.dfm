@@ -148,13 +148,14 @@ object Form2: TForm2
         KeepOnOnePage = False
         BandType = rbDetail
         object QRHoverLabel1: TQRHoverLabel
-          Left = 48
+          Left = 72
           Top = 24
           Width = 50
           Height = 24
+          Cursor = crSizeNWSE
           Size.Values = (
             63.500000000000000000
-            127.000000000000000000
+            190.500000000000000000
             63.500000000000000000
             132.291666666666700000)
           XLColumn = 0
@@ -172,13 +173,13 @@ object Form2: TForm2
           FontSize = 10
         end
         object QRHoverLabel2: TQRHoverLabel
-          Left = 96
+          Left = 64
           Top = 64
           Width = 50
           Height = 24
           Size.Values = (
             63.500000000000000000
-            254.000000000000000000
+            169.333333333333300000
             169.333333333333300000
             132.291666666666700000)
           XLColumn = 0
@@ -196,14 +197,15 @@ object Form2: TForm2
           FontSize = 10
         end
         object QRHoverLabel3: TQRHoverLabel
-          Left = 624
-          Top = 24
+          Left = 640
+          Top = 16
           Width = 50
           Height = 24
+          Cursor = crSizeNWSE
           Size.Values = (
             63.500000000000000000
-            1651.000000000000000000
-            63.500000000000000000
+            1693.333333333333000000
+            42.333333333333330000
             132.291666666666700000)
           XLColumn = 0
           XLNumFormat = nfGeneral
@@ -219,15 +221,15 @@ object Form2: TForm2
           VerticalAlignment = tlTop
           FontSize = 10
         end
-        object QRHoverLabel5: TQRHoverLabel
-          Left = 232
-          Top = 6
+        object QRHoverLabel4: TQRHoverLabel
+          Left = 320
+          Top = 16
           Width = 50
           Height = 24
           Size.Values = (
             63.500000000000000000
-            613.833333333333300000
-            15.875000000000000000
+            846.666666666666700000
+            42.333333333333330000
             132.291666666666700000)
           XLColumn = 0
           XLNumFormat = nfGeneral
@@ -235,7 +237,7 @@ object Form2: TForm2
           Alignment = taLeftJustify
           AlignToBand = False
           AutoSize = False
-          Caption = 'QRHoverLabel5'
+          Caption = 'QRHoverLabel4'
           Color = clWhite
           Transparent = False
           ExportAs = exptText
@@ -243,16 +245,34 @@ object Form2: TForm2
           VerticalAlignment = tlTop
           FontSize = 10
         end
+        object QRHoverImage2: TQRHoverImage
+          Left = 561
+          Top = 11
+          Width = 73
+          Height = 81
+          Frame.DrawTop = True
+          Frame.DrawBottom = True
+          Frame.DrawLeft = True
+          Frame.DrawRight = True
+          Size.Values = (
+            214.312500000000000000
+            1484.312500000000000000
+            29.104166666666670000
+            193.145833333333300000)
+          XLColumn = 0
+          XLNumFormat = nfGeneral
+          ActiveInPreview = False
+        end
         object QRHoverRichText2: TQRHoverRichText
-          Left = 360
-          Top = 16
-          Width = 100
+          Left = 64
+          Top = -2
+          Width = 306
           Height = 100
           Size.Values = (
             264.583333333333300000
-            952.500000000000000000
-            42.333333333333330000
-            264.583333333333300000)
+            169.333333333333300000
+            -5.291666666666667000
+            809.625000000000000000)
           XLColumn = 0
           XLNumFormat = nfGeneral
           ActiveInPreview = False
@@ -284,23 +304,23 @@ object Form2: TForm2
         PreCaluculateBandHeight = False
         KeepOnOnePage = False
         BandType = rbSummary
-        object QRHoverLabel4: TQRHoverLabel
-          Left = 48
-          Top = 16
-          Width = 185
+        object QRHoverLabel5: TQRHoverLabel
+          Left = 64
+          Top = 8
+          Width = 50
           Height = 24
           Size.Values = (
             63.500000000000000000
-            127.000000000000000000
-            42.333333333333330000
-            489.479166666666700000)
+            169.333333333333300000
+            21.166666666666670000
+            132.291666666666700000)
           XLColumn = 0
           XLNumFormat = nfGeneral
           ActiveInPreview = False
           Alignment = taLeftJustify
           AlignToBand = False
           AutoSize = False
-          Caption = 'QRHoverLabel4'
+          Caption = 'QRHoverLabel5'
           Color = clWhite
           Transparent = False
           ExportAs = exptText
@@ -308,16 +328,30 @@ object Form2: TForm2
           VerticalAlignment = tlTop
           FontSize = 10
         end
-        object QRHoverRichText1: TQRHoverRichText
-          Left = 184
-          Top = 32
-          Width = 100
-          Height = 100
+        object QRHoverImage1: TQRHoverImage
+          Left = 608
+          Top = 16
+          Width = 105
+          Height = 105
           Size.Values = (
-            264.583333333333300000
-            486.833333333333300000
-            84.666666666666670000
-            264.583333333333300000)
+            277.812500000000000000
+            1608.666666666667000000
+            42.333333333333330000
+            277.812500000000000000)
+          XLColumn = 0
+          XLNumFormat = nfGeneral
+          ActiveInPreview = False
+        end
+        object QRHoverRichText1: TQRHoverRichText
+          Left = 320
+          Top = 46
+          Width = 161
+          Height = 44
+          Size.Values = (
+            116.416666666666700000
+            846.666666666666700000
+            121.708333333333300000
+            425.979166666666700000)
           XLColumn = 0
           XLNumFormat = nfGeneral
           ActiveInPreview = False

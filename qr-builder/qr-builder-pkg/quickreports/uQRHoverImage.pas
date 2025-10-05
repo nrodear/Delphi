@@ -2,33 +2,24 @@ unit uQRHoverImage;
 
 interface
 
-{
-TQRLabel
-TQRDBText
-TQRShape
-TQRImage
-TQRExpr
-TQRRichText
-}
-
 uses
-  System.Classes, System.Types, System.Messaging, Vcl.Controls, Vcl.Graphics,
-  QuickRpt, QRCtrls, FMX.Forms, uQRMouseBehavior;
+  System.Classes, System.Messaging, Vcl.Controls,
+  QuickRpt, QRCtrls, uQRMouseBehavior, uHasSnapShotAttribute;
 
 type
+  [HasSnapShotAttribute]
   TQRHoverImage = class(TQRImage)
   private
     FMouseBehavior: TQRMouseBehavior;
     procedure CMMouseEnter(var Message: TMessage); message CM_MOUSEENTER;
     procedure CMMouseLeave(var Message: TMessage); message CM_MOUSELEAVE;
-  protected
-    procedure Paint; override;
 
+  protected
     procedure MouseDown(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
     procedure MouseUp(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
-
   public
+    procedure SetParent(AParent: TWinControl); override;
     constructor Create(AOwner: TComponent); override;
   end;
 
@@ -44,9 +35,14 @@ end;
 constructor TQRHoverImage.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  DoubleBuffered := True;
+  ControlStyle := ControlStyle + [csReplicatable, csDesignInteractive];
   FMouseBehavior := TQRMouseBehavior.Create(AOwner, self);
+
+  FMouseBehavior.FResizingDirection:= RDAll;
+  name := Self.ClassName;
+  DoubleBuffered := True;
   AutoSize := False;
+
 end;
 
 procedure TQRHoverImage.CMMouseEnter(var Message: TMessage);
@@ -77,10 +73,13 @@ begin
   FMouseBehavior.MouseUp(Self);
 end;
 
-procedure TQRHoverImage.Paint;
+procedure TQRHoverImage.SetParent(AParent: TWinControl);
 begin
-  inherited Paint;
+  inherited;
 end;
+
+initialization
+  RegisterClass(TQRHoverImage);
 
 end.
 

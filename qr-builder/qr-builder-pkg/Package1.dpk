@@ -41,9 +41,10 @@ requires
 contains
   uQRMouseBehavior in 'base\uQRMouseBehavior.pas',
   uQRHoverBand in 'quickreports\uQRHoverBand.pas',
-  uQRHoverLabel in 'quickreports\uQRHoverLabel.pas',
+  uQRHoverImage in 'quickreports\uQRHoverImage.pas',
   uQRComponentSnapshot in 'base\uQRComponentSnapshot.pas',
   uHasSnapShotAttribute in 'base\uHasSnapShotAttribute.pas',
-  uQRHoverRichText in 'quickreports\uQRHoverRichText.pas';
+  uQRHoverRichText in 'quickreports\uQRHoverRichText.pas',
+  uQRHoverLabel in 'quickreports\uQRHoverLabel.pas';
 
 end.

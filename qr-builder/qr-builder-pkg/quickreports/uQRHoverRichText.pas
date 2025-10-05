@@ -35,7 +35,7 @@ constructor TQRHoverRichText.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   DoubleBuffered := True;
-
+  name := Self.ClassName;
   FMouseBehavior := TQRMouseBehavior.Create(AOwner,self);
   FMouseBehavior.FResizingDirection:= RDAll;
   AutoSize:= False;

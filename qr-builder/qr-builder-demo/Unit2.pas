@@ -24,9 +24,11 @@ type
     QRHoverLabel2: TQRHoverLabel;
     QRHoverLabel3: TQRHoverLabel;
     QRHoverLabel4: TQRHoverLabel;
-    QRHoverLabel5: TQRHoverLabel;
     QRHoverRichText1: TQRHoverRichText;
+    QRHoverLabel5: TQRHoverLabel;
     QRHoverRichText2: TQRHoverRichText;
+    QRHoverImage1: TQRHoverImage;
+    QRHoverImage2: TQRHoverImage;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
 
@@ -73,7 +75,7 @@ begin
 
   QRHoverRichText1.lines.text := StrDiesIstEinBeispie;
 
-  QRHoverLabel5.Caption := 'Disclaimer';
+  QRHoverLabel4.Caption := 'Disclaimer';
   QRHoverRichText2.lines.text := StrDieVerwendungDiese;
 end;
 

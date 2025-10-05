@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.023,C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Project2.dproj=D:\git-demos\delphi\qr-builder\qr-builder-demo2\Project2.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.406,C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.dfm=D:\git-demos\delphi\qr-builder\qr-builder-demo2\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.406,C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.pas=D:\git-demos\delphi\qr-builder\qr-builder-demo2\Unit2.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.800,=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.406,D:\git-demos\delphi\qr-builder\qr-builder-demo2\Unit2.pas=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.406,D:\git-demos\delphi\qr-builder\qr-builder-demo2\Unit2.dfm=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Unit2.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.023,D:\git-demos\delphi\qr-builder\qr-builder-demo2\Project2.dproj=C:\Users\ngerlach\Documents\Embarcadero\Studio\Projekte\Project2.dproj</Transaction>
   </Transactions>
 </BorlandProject>

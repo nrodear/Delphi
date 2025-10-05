@@ -112,10 +112,11 @@
         <DCCReference Include="xmlrtl.dcp"/>
         <DCCReference Include="base\uQRMouseBehavior.pas"/>
         <DCCReference Include="quickreports\uQRHoverBand.pas"/>
-        <DCCReference Include="quickreports\uQRHoverLabel.pas"/>
+        <DCCReference Include="quickreports\uQRHoverImage.pas"/>
         <DCCReference Include="base\uQRComponentSnapshot.pas"/>
         <DCCReference Include="base\uHasSnapShotAttribute.pas"/>
         <DCCReference Include="quickreports\uQRHoverRichText.pas"/>
+        <DCCReference Include="quickreports\uQRHoverLabel.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

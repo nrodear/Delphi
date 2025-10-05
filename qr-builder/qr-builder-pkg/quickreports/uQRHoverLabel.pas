@@ -38,12 +38,13 @@ begin
   ControlStyle := ControlStyle + [csReplicatable, csDesignInteractive];
   FMouseBehavior := TQRMouseBehavior.Create(AOwner, self);
   FMouseBehavior.FResizingDirection:= RDAll;
-  Height:=24;
-  Width:=50;
-  name := 'QRHoverLabel';
+
+  name := Self.ClassName;
   DoubleBuffered := True;
   AutoSize := False;
 
+  Height:=24;
+  Width:=50;
 end;
 
 procedure TQRHoverLabel.CMMouseEnter(var Message: TMessage);
