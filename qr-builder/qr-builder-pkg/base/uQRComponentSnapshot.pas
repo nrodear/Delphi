@@ -3,8 +3,8 @@ unit uQRComponentSnapshot;
 interface
 
 uses
-  XMLDoc, XMLIntf, Classes, QuickRpt, QRPrntr, QRCTRLS, SysUtils, Vcl.Forms,
-  uHasSnapShotAttribute, Rtti, TypInfo;
+  XMLDoc, XMLIntf, Classes, QuickRpt, SysUtils, Vcl.Forms,
+  uHasSnapShotAttribute, Rtti;
 
 type
   TQRComponentSnapshot = class
@@ -21,9 +21,8 @@ implementation
 class procedure TQRComponentSnapshot.SaveQuickReportToXML(AForm: TForm; AReport: TQuickRep; AComponentClass: TComponentClass; const FileName: string; ASnapshotType: TSnapshotType);
 var
   XMLDoc: IXMLDocument;
-  RootNode, CompNameNode, CompNode: IXMLNode;
+  RootNode, CompNameNode: IXMLNode;
   i: Integer;
-  Comp: TComponent;
   Components: TList;
   SnapshotTypeStr: string;
   Found: Boolean;

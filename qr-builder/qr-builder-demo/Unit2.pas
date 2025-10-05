@@ -16,17 +16,17 @@ type
     Button1: TButton;
     Button2: TButton;
     QuickRep1: TQuickRep;
+    ComboBox1: TComboBox;
     QRBand1: TQRBand;
     QRHoverBandPanel1: TQRHoverBandPanel;
+    QRHoverBandPanel2: TQRHoverBandPanel;
     QRHoverLabel1: TQRHoverLabel;
     QRHoverLabel2: TQRHoverLabel;
-    ComboBox1: TComboBox;
-    QRBand3: TQRBand;
-    QRHoverBandPanel2: TQRHoverBandPanel;
     QRHoverLabel3: TQRHoverLabel;
+    QRHoverLabel4: TQRHoverLabel;
+    QRHoverLabel5: TQRHoverLabel;
     QRHoverRichText1: TQRHoverRichText;
-    QRLabel1: TQRLabel;
-    QRRichText1: TQRRichText;
+    QRHoverRichText2: TQRHoverRichText;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
 
@@ -46,6 +46,13 @@ var
 
 implementation
 
+resourcestring
+  StrDiesIstEinBeispie = 'Dies ist ein Beispieltext für den Monatsbericht. H' +
+  'ier können Sie formatierte Inhalte wie in Word einfügen.';
+  StrDieVerwendungDiese = 'Die Verwendung dieser Inhalte in produktiven oder' +
+  ' rechtlich relevanten Kontexten wird ausdrücklich nicht empfohlen. Änderu' +
+  'ngen und Irrtümer vorbehalten.';
+
 {$R *.dfm}
 
 procedure TForm2.FormCreate(Sender: TObject);
@@ -63,18 +70,20 @@ begin
   QRHoverLabel1.Caption := 'Monatsbericht Oktober';
   QRHoverLabel2.Caption := 'Abteilung Vertrieb';
   QRHoverLabel3.Caption := FormatDateTime('dd.mm.yyyy', Date);
-  ;
-  QRHoverRichText1.text := 'Dies ist ein Beispieltext für den Monatsbericht. Hier können Sie formatierte Inhalte wie in Word einfügen.';
 
+  QRHoverRichText1.lines.text := StrDiesIstEinBeispie;
+
+  QRHoverLabel5.Caption := 'Disclaimer';
+  QRHoverRichText2.lines.text := StrDieVerwendungDiese;
 end;
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
   QuickRep1.Prepare;
 
-  //QuickRep1.Preview;
+  QuickRep1.Preview;
 
-  QuickRep1.print;
+  //QuickRep1.print;
 
 end;
 

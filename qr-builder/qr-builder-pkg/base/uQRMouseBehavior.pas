@@ -3,8 +3,8 @@ unit uQRMouseBehavior;
 interface
 
 uses
-  System.Classes, System.Types, System.Messaging, Vcl.Controls, Vcl.Graphics,
-  QuickRpt, QRCtrls, Windows, Forms;
+  System.Classes, System.Types, Vcl.Controls,
+  Windows;
 
 type
   TResizingDirection = (RDHorizontal, RDVertikal, RDAll);
@@ -14,12 +14,11 @@ type
     const
       // Größe der Ecke zum Greifen
       FResizeZoneSize = 15;
-    function UpdateCursor(Sender: TControl; Shift: TShiftState; X, Y: Integer): TCursor;
+    procedure UpdateCursor(Sender: TControl; Shift: TShiftState; X, Y: Integer);
 
     var
       // TQRPrintable
       FTarget: TControl;
-      FOwner: TComponent;
       FDragging: Boolean;
       FDragStart: TPoint;
 
@@ -133,7 +132,7 @@ begin
   exit(false);
 end;
 
-function TQRMouseBehavior.UpdateCursor(Sender: TControl; Shift: TShiftState; X, Y: Integer): TCursor;
+procedure TQRMouseBehavior.UpdateCursor(Sender: TControl; Shift: TShiftState; X, Y: Integer);
 begin
   if (X >= Sender.Width - 10) and (Y >= TControl(Sender).Height - 10) then
   begin

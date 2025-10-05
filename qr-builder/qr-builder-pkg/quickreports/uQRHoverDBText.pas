@@ -18,9 +18,6 @@ type
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
     procedure MouseUp(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
 
-    procedure Paint; override;
-
-    procedure Invalidate; override;
   public
     constructor Create(AOwner: TComponent); override;
   end;
@@ -42,11 +39,6 @@ begin
 
   FMouseBehavior := TQRMouseBehavior.Create(AOwner, self);
 
-end;
-
-procedure TQRHoverDBText.Invalidate;
-begin
-  inherited;
 end;
 
 procedure TQRHoverDBText.CMMouseEnter(var Message: TMessage);
@@ -76,13 +68,6 @@ begin
   inherited;
   FMouseBehavior.MouseUp(Self);
 end;
-
-procedure TQRHoverDBText.Paint;
-begin
-  //not working
-  inherited;
-end;
-
 
 end.
 

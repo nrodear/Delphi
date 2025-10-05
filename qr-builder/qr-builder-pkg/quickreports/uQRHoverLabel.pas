@@ -3,7 +3,7 @@ unit uQRHoverLabel;
 interface
 
 uses
-  System.Classes, System.Types, System.Messaging, Vcl.Controls, Vcl.Graphics,
+  System.Classes, System.Messaging, Vcl.Controls,
   QuickRpt, QRCtrls, uQRMouseBehavior, uHasSnapShotAttribute;
 
 type
@@ -13,14 +13,13 @@ type
     FMouseBehavior: TQRMouseBehavior;
     procedure CMMouseEnter(var Message: TMessage); message CM_MOUSEENTER;
     procedure CMMouseLeave(var Message: TMessage); message CM_MOUSELEAVE;
-  protected
-    procedure Paint; override;
 
+  protected
     procedure MouseDown(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
     procedure MouseUp(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
   public
-    procedure Invalidate; override;
+    procedure SetParent(AParent: TWinControl); override;
     constructor Create(AOwner: TComponent); override;
   end;
 
@@ -45,11 +44,6 @@ begin
   DoubleBuffered := True;
   AutoSize := False;
 
-end;
-
-procedure TQRHoverLabel.Invalidate;
-begin
-  inherited;
 end;
 
 procedure TQRHoverLabel.CMMouseEnter(var Message: TMessage);
@@ -80,7 +74,7 @@ begin
   FMouseBehavior.MouseUp(Self);
 end;
 
-procedure TQRHoverLabel.Paint;
+procedure TQRHoverLabel.SetParent(AParent: TWinControl);
 begin
   inherited;
 end;

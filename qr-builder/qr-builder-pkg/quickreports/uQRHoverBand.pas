@@ -3,8 +3,8 @@ unit uQRHoverBand;
 interface
 
 uses
-  System.Classes, System.Types, System.Messaging, Vcl.Controls, Vcl.Graphics,
-  QuickRpt, QRCtrls, uQRMouseBehavior, uHasSnapShotAttribute;
+  System.Classes, System.Messaging, Vcl.Controls,
+  QuickRpt, uQRMouseBehavior, uHasSnapShotAttribute;
 
 type
   [HasSnapShotAttribute]
@@ -14,13 +14,11 @@ type
     procedure CMMouseEnter(var Message: TMessage); message CM_MOUSEENTER;
     procedure CMMouseLeave(var Message: TMessage); message CM_MOUSELEAVE;
   protected
-    procedure Paint; override;
-
+    procedure SetParent(AParent: TWinControl); override;
     procedure MouseDown(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
     procedure MouseUp(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
   public
-    procedure Invalidate; override;
     constructor Create(AOwner: TComponent); override;
   end;
 
@@ -44,11 +42,6 @@ begin
   Enabled := true;
   FMouseBehavior.FResizingDirection := RDVertikal;
 
-end;
-
-procedure TQRHoverBandPanel.Invalidate;
-begin
-  inherited;
 end;
 
 procedure TQRHoverBandPanel.CMMouseEnter(var Message: TMessage);
@@ -79,7 +72,7 @@ begin
   FMouseBehavior.MouseUp(Self);
 end;
 
-procedure TQRHoverBandPanel.Paint;
+procedure TQRHoverBandPanel.SetParent(AParent: TWinControl);
 begin
   inherited;
 end;

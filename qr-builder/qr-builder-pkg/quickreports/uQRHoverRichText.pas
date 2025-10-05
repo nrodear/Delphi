@@ -3,24 +3,23 @@ unit uQRHoverRichText;
 interface
 
 uses
-  System.Classes, System.Types, System.Messaging, Vcl.Controls, Vcl.Graphics,
+  System.Classes, System.Messaging, Vcl.Controls,
   QuickRpt, QRCtrls, uQRMouseBehavior,  uHasSnapShotAttribute;
 
 type
   [HasSnapShotAttribute]
-  TQRHoverRichText = class(TQRRichEdit)
+  TQRHoverRichText = class(TQRRichText)
   private
     FMouseBehavior: TQRMouseBehavior;
     procedure CMMouseEnter(var Message: TMessage); message CM_MOUSEENTER;
     procedure CMMouseLeave(var Message: TMessage); message CM_MOUSELEAVE;
+
   protected
     procedure MouseDown(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
     procedure MouseUp(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
-    procedure Paint;
-
-
   public
+    procedure SetParent(AParent: TWinControl); override;
     constructor Create(AOwner: TComponent); override;
   end;
 
@@ -40,6 +39,11 @@ begin
   FMouseBehavior := TQRMouseBehavior.Create(AOwner,self);
   FMouseBehavior.FResizingDirection:= RDAll;
   AutoSize:= False;
+end;
+
+procedure TQRHoverRichText.SetParent(AParent: TWinControl);
+begin
+  inherited SetParent(AParent); // ganz wichtig: zuerst Basisverhalten ausführen
 end;
 
 procedure TQRHoverRichText.CMMouseEnter(var Message: TMessage);
@@ -70,11 +74,6 @@ procedure TQRHoverRichText.MouseUp(Button: TMouseButton; Shift: TShiftState; X, 
 begin
   inherited;
   FMouseBehavior.MouseUp(Self);
-end;
-
-procedure TQRHoverRichText.Paint;
-begin
-  inherited;
 end;
 
 end.
