@@ -44,11 +44,13 @@ end;
 
 procedure TQRHoverRichText.CMMouseEnter(var Message: TMessage);
 begin
+  inherited;
   FMouseBehavior.MouseEnter(Self);
 end;
 
 procedure TQRHoverRichText.CMMouseLeave(var Message: TMessage);
 begin
+  inherited;
   FMouseBehavior.MouseLeave(Self);
 end;
 

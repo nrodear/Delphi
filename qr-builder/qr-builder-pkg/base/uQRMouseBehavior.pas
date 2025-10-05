@@ -4,7 +4,7 @@ interface
 
 uses
   System.Classes, System.Types, System.Messaging, Vcl.Controls, Vcl.Graphics,
-  QuickRpt, QRCtrls, Forms;
+  QuickRpt, QRCtrls, Windows, Forms;
 
 type
   TResizingDirection = (RDHorizontal, RDVertikal, RDAll);
@@ -14,6 +14,7 @@ type
     const
       // Größe der Ecke zum Greifen
       FResizeZoneSize = 15;
+    function UpdateCursor(Sender: TControl; Shift: TShiftState; X, Y: Integer): TCursor;
 
     var
       // TQRPrintable
@@ -42,13 +43,26 @@ type
 implementation
 
 procedure TQRMouseBehavior.MouseEnter(Sender: TControl);
+var
+  P: TPoint;
+  LocalX, LocalY: Integer;
 begin
+
+  // Mausposition relativ zum Bildschirm
+  GetCursorPos(P);
+
+  // Umrechnung in lokale Koordinaten des Steuerelements
+  P := Sender.ScreenToClient(P);
+  LocalX := P.X;
+  LocalY := P.Y;
+
+  UpdateCursor(Sender, [], LocalX, LocalY);
 
 end;
 
 procedure TQRMouseBehavior.MouseLeave(Sender: TControl);
 begin
-
+   TControl(Sender).Cursor := crDefault
 end;
 
 constructor TQRMouseBehavior.Create(AOwner: TComponent; ATarget: TControl);
@@ -85,6 +99,8 @@ var
   dx, dy: Integer;
   CurrentPos: TPoint;
 begin
+  UpdateCursor(Sender, Shift, X, Y);
+
   if FDragging then
   begin
     dx := X - FDragStart.X;
@@ -96,6 +112,7 @@ begin
     CurrentPos := Sender.ClientToScreen(Point(X, Y));
     dx := CurrentPos.X - FResizeStart.X;
     dy := CurrentPos.Y - FResizeStart.Y;
+
     if IsResizingDirection(RDHorizontal) then
       Sender.Width := Sender.Width + dx;
     if IsResizingDirection(RDVertikal) then
@@ -114,6 +131,20 @@ begin
     exit(true);
 
   exit(false);
+end;
+
+function TQRMouseBehavior.UpdateCursor(Sender: TControl; Shift: TShiftState; X, Y: Integer): TCursor;
+begin
+  if (X >= Sender.Width - 10) and (Y >= TControl(Sender).Height - 10) then
+  begin
+    if ssCtrl in Shift then
+      TControl(Sender).Cursor := crSize
+    else
+      TControl(Sender).Cursor := crSizeNWSE
+  end
+  else
+    TControl(Sender).Cursor := crDefault;
+
 end;
 
 end.
