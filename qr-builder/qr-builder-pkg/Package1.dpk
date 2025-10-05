@@ -43,6 +43,7 @@ contains
   uQRHoverBand in 'quickreports\uQRHoverBand.pas',
   uQRHoverLabel in 'quickreports\uQRHoverLabel.pas',
   uQRComponentSnapshot in 'base\uQRComponentSnapshot.pas',
-  uHasSnapShotAttribute in 'base\uHasSnapShotAttribute.pas';
+  uHasSnapShotAttribute in 'base\uHasSnapShotAttribute.pas',
+  uQRHoverRichText in 'quickreports\uQRHoverRichText.pas';
 
 end.

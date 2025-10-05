@@ -14,9 +14,10 @@ type
     const
       // Größe der Ecke zum Greifen
       FResizeZoneSize = 15;
+
     var
       // TQRPrintable
-      FTarget: TComponent;
+      FTarget: TControl;
       FOwner: TComponent;
       FDragging: Boolean;
       FDragStart: TPoint;
@@ -35,7 +36,7 @@ type
 
     procedure MouseUp(Sender: TControl);
 
-    constructor Create(AOwner: TComponent; ATarget: TComponent);
+    constructor Create(AOwner: TComponent; ATarget: TControl);
   end;
 
 implementation
@@ -50,12 +51,12 @@ begin
 
 end;
 
-constructor TQRMouseBehavior.Create(AOwner: TComponent; ATarget: TComponent);
+constructor TQRMouseBehavior.Create(AOwner: TComponent; ATarget: TControl);
 begin
   inherited Create;
   FTarget := ATarget;
   FResizingDirection := RDAll;
-  FTarget.Name:= FTarget.ClassName;
+  FTarget.Name := FTarget.ClassName;
 end;
 
 procedure TQRMouseBehavior.MouseUp(Sender: TControl);

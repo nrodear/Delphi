@@ -7,7 +7,7 @@
             <Dependencies/>
         </Projects>
         <Projects Include="qr-builder-demo\Project2.dproj">
-            <Dependencies/>
+            <Dependencies>qr-builder-pkg\Package1.dproj</Dependencies>
         </Projects>
     </ItemGroup>
     <ProjectExtensions>
@@ -26,13 +26,13 @@
     <Target Name="Package1:Make">
         <MSBuild Projects="qr-builder-pkg\Package1.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Project2">
+    <Target Name="Project2" DependsOnTargets="Package1">
         <MSBuild Projects="qr-builder-demo\Project2.dproj"/>
     </Target>
-    <Target Name="Project2:Clean">
+    <Target Name="Project2:Clean" DependsOnTargets="Package1:Clean">
         <MSBuild Projects="qr-builder-demo\Project2.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Project2:Make">
+    <Target Name="Project2:Make" DependsOnTargets="Package1:Make">
         <MSBuild Projects="qr-builder-demo\Project2.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">

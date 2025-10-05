@@ -115,6 +115,7 @@
         <DCCReference Include="quickreports\uQRHoverLabel.pas"/>
         <DCCReference Include="base\uQRComponentSnapshot.pas"/>
         <DCCReference Include="base\uHasSnapShotAttribute.pas"/>
+        <DCCReference Include="quickreports\uQRHoverRichText.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

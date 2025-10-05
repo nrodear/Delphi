@@ -4,9 +4,10 @@ interface
 
 uses
   System.Classes, System.Types, System.Messaging, Vcl.Controls, Vcl.Graphics,
-  QuickRpt, QRCtrls, uQRMouseBehavior;
+  QuickRpt, QRCtrls, uQRMouseBehavior,  uHasSnapShotAttribute;
 
 type
+  [HasSnapShotAttribute]
   TQRHoverRichText = class(TQRRichEdit)
   private
     FMouseBehavior: TQRMouseBehavior;
@@ -17,7 +18,7 @@ type
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
     procedure MouseUp(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
     procedure Paint;
-    procedure Print(OfsX, OfsY: Integer);
+
 
   public
     constructor Create(AOwner: TComponent); override;
@@ -36,7 +37,8 @@ begin
   inherited Create(AOwner);
   DoubleBuffered := True;
 
-  FMouseBehavior := TQRMouseBehavior.Create(self);
+  FMouseBehavior := TQRMouseBehavior.Create(AOwner,self);
+  FMouseBehavior.FResizingDirection:= RDAll;
   AutoSize:= False;
 end;
 
@@ -71,12 +73,6 @@ end;
 procedure TQRHoverRichText.Paint;
 begin
   inherited;
-  FMouseBehavior.Paint(Self, nil, Width, Height);
-end;
-
-procedure TQRHoverRichText.Print(OfsX, OfsY: Integer);
-begin
-  FMouseBehavior.Paint(Self, nil, Width, Height);
 end;
 
 end.

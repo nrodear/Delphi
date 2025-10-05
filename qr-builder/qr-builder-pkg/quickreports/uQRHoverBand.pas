@@ -41,7 +41,7 @@ begin
   FMouseBehavior := TQRMouseBehavior.Create(AOwner, self);
   DoubleBuffered := True;
   name := Self.ClassName;
-
+  Enabled := true;
   FMouseBehavior.FResizingDirection := RDVertikal;
 
 end;
